@@ -16,8 +16,13 @@ h3 { font-size: 1.5em; }
 
 a {
   text-decoration: none;
-
   color: orangered;
+
+  -webkit-transition: text-shadow 1s, color 1s;
+
+  &:hover {
+    color: antiquewhite;
+  }
 }
 
 section {
@@ -35,7 +40,9 @@ section {
   }
 
   aside {
-    opacity: 0.25;
+    opacity: 0.5;
+
+    font-size: 0.75em;
     font-style: italic;
   }
 
@@ -53,7 +60,7 @@ section {
     height: 350px;
     margin: 0 auto;
 
-    background-color: black;
+    background-color: #222;
     color: white;
 
     border-radius: 175px;
@@ -80,5 +87,12 @@ section {
 }
 
 #graphics {
+  background-image: url('//place.manatee.lc/2000/1000.jpg');
 
+  color: white;
+  text-shadow: 0 2px 5px black;
+}
+
+#more {
+  box-shadow: none;
 }
