@@ -10,6 +10,10 @@ body {
   cursor: default;
 }
 
+h1, h2, h3 {
+  font-weight: normal;
+}
+
 h1 { font-size: 2.5em; }
 h2 { font-size: 2em; }
 h3 { font-size: 1.5em; }
@@ -19,6 +23,7 @@ a {
   color: orangered;
 
   -webkit-transition: text-shadow 1s, color 1s;
+  -moz-transition: text-shadow 1s, color 1s;
 
   &:hover {
     color: antiquewhite;
@@ -40,10 +45,19 @@ section {
   }
 
   aside {
-    opacity: 0.5;
+    opacity: 0.0;
 
     font-size: 0.75em;
     font-style: italic;
+
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+  }
+
+  &:hover {
+    aside {
+      opacity: 1;
+    }
   }
 
   .grids {
@@ -52,6 +66,7 @@ section {
 }
 
 #intro {
+  height: 700px;
   box-shadow: none;
 
   .bubble {
@@ -59,6 +74,7 @@ section {
     width: 350px;
     height: 350px;
     margin: 0 auto;
+    margin-bottom: 100px;
 
     background-color: #222;
     color: white;
@@ -66,6 +82,26 @@ section {
     border-radius: 175px;
 
     z-index: 1;
+
+    box-shadow: 0px 0px 25px #666;
+
+    :before {
+      position: absolute;
+      right: 0px;
+      top: 275px;
+      width: 0;
+      height: 0;
+
+      border-top:    40px solid transparent;
+      border-bottom: 40px solid transparent;
+      border-right:  80px solid #222;
+
+      -webkit-transform: rotate(-135deg);
+      -moz-transform: rotate(-135deg);
+
+      content: "";
+      z-index: 0;
+    }
 
     .greet {
       padding-top: 125px;
@@ -79,7 +115,7 @@ section {
   background-image: url('//place.manatee.lc/1000/500.jpg');
 
   color: white;
-  text-shadow: 0 2px 5px black;
+  text-shadow: 0 1px 1px black;
 }
 
 #music {
@@ -87,12 +123,62 @@ section {
 }
 
 #graphics {
-  background-image: url('//place.manatee.lc/2000/1000.jpg');
-
   color: white;
-  text-shadow: 0 2px 5px black;
+  text-shadow: 0 1px 1px black;
+
+  .flexslider {
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    margin-bottom: -500px;
+    z-index: -1;
+
+    background-color: black;
+
+    box-shadow: none;
+    border: none;
+
+    li {
+      width: 100%;
+      height: 500px;
+
+      background-size: auto 500px;
+      background-position: center;
+
+      .info {
+        position: absolute;
+        bottom: 40px;
+        right: 0;
+        padding: 10px 30px;
+
+        background-color: white;
+
+        text-shadow: none;
+        text-align: right;
+        color: black;
+
+        box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .flex-control-nav, .flex-direction-nav { display: none; }
+  }
 }
 
 #more {
   box-shadow: none;
+}
+
+footer {
+  float: left;
+  width: 100%;
+  padding: 50px 0;
+
+  background-image: url('../images/footer.png');
+
+  font-size: smaller;
+  text-align: center;
+  color: #999;
+
+  border-top: 2px dashed white;
 }

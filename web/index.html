@@ -11,12 +11,16 @@
 
     <link rel="stylesheet" href="/assets/css/toast.css">
     <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/flexslider.css">
     <link rel="stylesheet" href="/assets/less/style.less" type="text/less">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Prata">
 
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="/assets/js/jquery.flexslider-min.js"></script>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -36,7 +40,9 @@
             <div class="grids">
                 <div class="grid-12">
                     <div class="bubble">
-                        <div class="greet">Oh, hello.</div>
+                        <div class="greet">
+                            Oh, hello<span style="color: orangered">.</span>
+                        </div>
                         I welcome you to my humble site.
                     </div>
                 </div>
@@ -85,6 +91,37 @@
     </section>
 
     <section id="graphics">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="background-image: url('assets/images/graphics/navigational-illustration.jpg');">
+                    <div class="info">
+                        Navigational Illustration: Graphics Compo Winner<br>
+                        <small>Icons 2008</small>
+                    </div>
+                </li>
+
+                <li style="background-image: url('assets/images/graphics/work.jpg');">
+                    <div class="info">
+                        Work<br>
+                        <small>2006</small>
+                    </div>
+                </li>
+
+                <li style="background-image: url('assets/images/graphics/drug.jpg');">
+                    <div class="info">
+                        Drug<br>
+                        <small>2005</small>
+                    </div>
+                </li>
+                <li style="background-image: url('assets/images/graphics/river.jpg');">
+                    <div class="info">
+                        From the first year I started photography<br>
+                        <small>2004</small>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
         <div class="wrap">
             <div class="grids">
                 <div class="grid-12">
@@ -99,10 +136,8 @@
         <div class="wrap">
             <div class="grids">
                 <div class="grid-12">
-                    <aside>Still here?</aside>
-                    <h2>Lus</h2>
-
-                    <p>You can always check out these</p>
+                    <aside>Nice to meet you.</aside>
+                    <h2>I am Panu Lepp&auml;niemi.</h2>
 
                     <a href="http://www.linkedin.com/in/panuleppaniemi" title="LinkedIn">
                         <i class="icon-linkedin"></i>
@@ -112,6 +147,19 @@
         </div>
     </section>
 
+    <footer>
+        &copy; Panu Lepp&auml;niemi
+    </footer>
+
     <script src="/assets/js/less-1.3.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.flexslider').flexslider({
+                animation: 'fade',
+                slideshowSpeed: 5000,
+                animationSpeed: 5000
+            });
+        });
+    </script>
 </body>
 </html>
