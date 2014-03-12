@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "grunt": "~0.4.3"
+    "grunt": "~0.4.3",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-contrib-cssmin": "~0.6.2"
   }
 }
