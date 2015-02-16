@@ -10,17 +10,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <link rel="stylesheet" href="/assets/css/style.min.css" type="text/css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Vollkorn">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Vollkorn">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato">
 
-    <!--[if lt IE 9]>
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <script src="/assets/js/jquery.flexslider-min.js"></script>
-
-    <script type="text/javascript">
+    <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-20731368-2']);
         _gaq.push(['_trackPageview']);
@@ -34,7 +27,7 @@
 </head>
 <body>
 
-<section style="background-image: url('/assets/images/stardust.png'); color: white; padding: 18% 0;">
+<section style="background-image: url('/assets/images/intro.jpg'); background-size: cover; color: white">
     <div class="content">
         <p>
             <span class="title">
@@ -46,47 +39,65 @@
 
             <small>
                 Which is basically just a collection of links
-                in order to rank them a bit higher on Google.
+                in order to rank them a bit higher on Google :-)
             </small>
         </p>
     </div>
 </section>
 
-<section style="padding: 18% 0;">
+<section>
     <div class="content">
         <p>
             I like to build software and products.
             It is also how I make my living, enjoying my time working at <a href="https://fraktio.fi">Fraktio</a>.
-            Here's a link to my <a href="https://github.com/panunu">GitHub profile</a>.
+        </p>
+
+        <p>
+            For a more detailed description of my career, I suggest visiting my <a href="https://www.linkedin.com/in/panuleppaniemi">LinkedIn-profile</a>.
+            And for the tech-savvy, here's a link to my <a href="https://github.com/panunu">GitHub-profile</a>.
         </p>
     </div>
 </section>
 
-<section style="background-color: #ddd; padding: 18% 0;">
+<section style="background-color: #ddd">
     <div class="content">
         <p>
-            <small>What I do in addition to programming &mdash;</small>
+            <small>Other interests in addition to programming</small>
         </p>
 
         <p>
             Music. Do not take it too seriously. It is just something that I do without giving it too much thought.
-            Some quick drafts are available at <a href="#">SoundCloud</a>.
+            Some quick drafts are available at <a href="https://soundcloud.com/panununu">SoundCloud</a>.
         </p>
 
         <p>
-            Also things like photography, illustration and design. These skills have turned out to be quite useful when creating something visual (say, a web application).
+            I also enjoy things like photography, illustration and design.
+            These skills have turned out to be quite useful when creating something visual (say, a web application).
         </p>
 
-        <div id="images">
-            <img src="/assets/images/graphics/drug.jpg">
-            <img src="/assets/images/graphics/navigational-illustration.jpg">
-            <img src="/assets/images/graphics/river.jpg">
-            <img src="/assets/images/graphics/work.jpg">
-        </div>
+        <p>
+            I am constantly looking for ways to improve myself.
+            Recently been drawn into Systems Thinking.
+        </p>
+
+        <p id="illustrations">
+            <img data-src="/assets/images/graphics/drug.jpg" class="hidden-illustration" title="Drug, 2005">
+            <img data-src="/assets/images/graphics/navigational-illustration.jpg" class="hidden-illustration" title="Navigational Illustration: Graphics Compo Winner, Icons 2008">
+            <img data-src="/assets/images/graphics/river.jpg" class="hidden-illustration" title="From the first year I started photography, 2004">
+            <img data-src="/assets/images/graphics/work.jpg" class="hidden-illustration">
+
+            <script>
+                var elements = document.getElementsByClassName('hidden-illustration');
+                var element = elements[~~(elements.length * Math.random())];
+
+                element.src = element.dataset.src;
+                element.classList.remove('hidden-illustration');
+            </script>
+        </p>
     </div>
 </section>
 
-<section>
+<section id="footer">
     <div class="content">
         <p>
             I am Panu Leppäniemi. Nice to meet you.
@@ -94,135 +105,10 @@
     </div>
 </section>
 
-    <!--
-    <section id="intro">
-        <div class="wrap">
-            <div class="grids">
-                <div class="grid-12">
-                    <div class="bubble">
-                        <div class="greet">
-                            Oh, hello<span style="color: orangered">.</span>
-                        </div>
-                        I welcome you to my humble site.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<video autoplay loop poster="signature.jpg">
+    <source src="signature.webm" type="video/webm">
+    <source src="signature.mp4" type="video/mp4">
+</video>
 
-    <section id="programming">
-        <div class="wrap">
-            <div class="grids">
-                <div class="grid-12">
-                    <div class="content">
-                        <aside>Mostly for the web.</aside>
-                        <h1>I like to build software.</h1>
-
-                        <p>
-                            It is also how I make my living, and I enjoy my time working at <a href="https://fraktio.fi">Fraktio.</a>
-                        </p>
-
-                        <p>
-                            <a href="https://github.com/panunu" title="Github">
-                                <i class="icon-github"></i>
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="music">
-        <div class="wrap">
-            <div class="grids">
-                <div class="grid-12">
-                    <aside>Just for fun.</aside>
-                    <h2>I also make music.</h2>
-
-                    <p>
-                        <a href="https://soundcloud.com/panununu" title="SoundCloud">
-                            <i class="icon-volume-up"></i>
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="graphics">
-        <div class="flexslider">
-            <ul class="slides">
-                <li style="background-image: url('assets/images/graphics/navigational-illustration.jpg');">
-                    <div class="info">
-                        Navigational Illustration: Graphics Compo Winner<br>
-                        <small>Icons 2008</small>
-                    </div>
-                </li>
-
-                <li style="background-image: url('assets/images/graphics/work.jpg');">
-                    <div class="info">
-                        Work<br>
-                        <small>2006</small>
-                    </div>
-                </li>
-
-                <li style="background-image: url('assets/images/graphics/drug.jpg');">
-                    <div class="info">
-                        Drug<br>
-                        <small>2005</small>
-                    </div>
-                </li>
-                <li style="background-image: url('assets/images/graphics/river.jpg');">
-                    <div class="info">
-                        From the first year I started photography<br>
-                        <small>2004</small>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="wrap">
-            <div class="grids">
-                <div class="grid-12">
-                    <aside>Artsy.</aside>
-                    <h2>Photography. Illustration. Design.</h2>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="more">
-        <div class="wrap">
-            <div class="grids">
-                <div class="grid-12">
-                    <aside>Nice to meet you.</aside>
-                    <h2>I am Panu Lepp&auml;niemi.</h2>
-
-                    <a href="http://www.linkedin.com/in/panuleppaniemi" title="LinkedIn">
-                        <i class="icon-linkedin"></i>
-                    </a>
-
-                    <a href="https://twitter.com/panuleppaniemi" title="Twitter">
-                        <i class="icon-twitter"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        &copy; Panu Lepp&auml;niemi
-    </footer>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.flexslider').flexslider({
-                animation: 'fade',
-                slideshowSpeed: 5000,
-                animationSpeed: 5000
-            });
-        });
-    </script>-->
 </body>
 </html>
