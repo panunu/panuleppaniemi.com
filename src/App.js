@@ -16,8 +16,8 @@ export default class extends Component {
     super(props);
 
     this.state = {
-      isTyping: false,
-      isReady: true,
+      isTyping: true,
+      isReady: false,
       available: [
         {
           id: 0,
@@ -40,8 +40,7 @@ export default class extends Component {
           goesWith: 1,
           q: "Do you work somewhere?",
           a: [
-            <span>At <a href="https://fraktio.fi">Fraktio</a>.</span>,
-            "Maybe you have heard about us?",
+            <span>At <a href="https://fraktio.fi">Fraktio</a>. Perhaps you have heard about us.</span>,
           ],
         },
         {
@@ -57,17 +56,36 @@ export default class extends Component {
             </div>
           ]
         },
+        {
+          id: 4,
+          q: "I would like to discuss with actual you...",
+          a: [
+            "Of course :-)",
+            "So, you can contact me on Twitter",
+            <a href="https://twitter.com/@panuleppaniemi">@panuleppaniemi</a>,
+            <span>Or send me an email, <a href="mailto:me@panuleppaniemi.com">me@panuleppaniemi.com</a></span>,
+          ]
+        },
       ],
+      messages: [],
       discussed: [],
-      messages: [
-        {message: 'Oh, hello', who: 'Panu'}
-      ],
     };
+  }
+
+  componentDidMount() {
+    setTimeout(
+      () => this.setState({
+        messages: [{message: 'Oh, hello!', who: 'Panu'}],
+        isReady: true,
+        isTyping: false
+      }),
+      2000
+    );
   }
 
   render() {
     const nextAvailableTopic = R.head(this.state.available.filter(t => this.state.discussed.indexOf(t.id) === -1));
-    const alsoAvailable = R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
+    const alsoAvailable = nextAvailableTopic && R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
     console.log(this.state.available)
     console.log(this.state.discussed)
