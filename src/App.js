@@ -3,6 +3,14 @@ import './App.css';
 import R from 'ramda';
 import styled from 'styled-components';
 
+const Message = styled.div`
+  padding: 10px 20px;
+  
+  background-color: ${props => props.who === 'Panu' ? 'papayawhip' : 'palevioletred'}
+`;
+
+const Text = styled.div``;
+
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -23,25 +31,18 @@ export default class extends Component {
           id: 1,
           q: "So, what do you do?",
           a: [
-            "I am a software developer / designer whatnot.",
+            "I am a software developer / designer.",
             "Not really so fond of titles :-)",
-            "But I like to design and build software and products",
-            "Basically it's how I make my living.",
           ],
         },
         {
           id: 2,
-          relatedTo: 1,
-          q: "Anything else?",
+          goesWith: 1,
+          q: "Do you work somewhere?",
           a: [
-            "Sure!",
-            "Interests drift every now and then, but there are some things that have stuck with me",
-            <div>
-              <strong>
-                test
-              </strong>
-            </div>
-          ]
+            <span>At <a href="https://fraktio.fi">Fraktio</a>.</span>,
+            "Maybe you have heard about us?",
+          ],
         },
         {
           id: 3,
@@ -55,26 +56,28 @@ export default class extends Component {
               </strong>
             </div>
           ]
-        }
+        },
       ],
       discussed: [],
-      messages: [],
+      messages: [
+        {message: 'Oh, hello', who: 'Panu'}
+      ],
     };
   }
 
   render() {
     const nextAvailableTopic = R.head(this.state.available.filter(t => this.state.discussed.indexOf(t.id) === -1));
+    const alsoAvailable = R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
-    console.log(nextAvailableTopic)
+    console.log(this.state.available)
+    console.log(this.state.discussed)
 
     return (
       <div>
-        <div>Oh, hello!</div>
-
         {this.state.messages.map((m, key) => (
-          <div key={key}>
-            <div>{m.message}</div>
-          </div>
+          <Message key={key} who={m.who}>
+            <Text>{m.message}</Text>
+          </Message>
         ))}
 
         {this.state.isTyping && <div>Panu is typing...</div>}
@@ -82,6 +85,12 @@ export default class extends Component {
         {nextAvailableTopic && this.state.isReady &&
           <button onClick={() => this.selectNextTopic(nextAvailableTopic)}>
             {nextAvailableTopic.q}
+          </button>
+        }
+
+        {alsoAvailable && this.state.isReady &&
+          <button onClick={() => this.selectNextTopic(alsoAvailable)}>
+            {alsoAvailable.q}
           </button>
         }
       </div>
@@ -115,7 +124,7 @@ export default class extends Component {
 
               this.setState({isReady: true});
             },
-            message.length * 50 + 200
+            message.length * 50 + 200 + Math.random() * 100
           );
         },
         Math.random() * 2000 + 1000
