@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import R from 'ramda';
-import styled from 'styled-components';
 
-const Message = styled.div`
-  padding: 10px 20px;
-  
-  background-color: ${props => props.who === 'Panu' ? 'papayawhip' : 'palevioletred'}
-`;
-
-const Text = styled.div``;
+import Message from './Message';
+import Typing from './Typing';
 
 export default class extends Component {
   constructor(props) {
@@ -61,9 +55,9 @@ export default class extends Component {
           q: "I would like to discuss with actual you...",
           a: [
             "Of course :-)",
-            "So, you can contact me on Twitter",
+            "So, you could contact me on Twitter",
             <a href="https://twitter.com/@panuleppaniemi">@panuleppaniemi</a>,
-            <span>Or send me an email, <a href="mailto:me@panuleppaniemi.com">me@panuleppaniemi.com</a></span>,
+            <span>Or just send me an email to <a href="mailto:me@panuleppaniemi.com">me@panuleppaniemi.com</a></span>,
           ]
         },
       ],
@@ -87,18 +81,13 @@ export default class extends Component {
     const nextAvailableTopic = R.head(this.state.available.filter(t => this.state.discussed.indexOf(t.id) === -1));
     const alsoAvailable = nextAvailableTopic && R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
-    console.log(this.state.available)
-    console.log(this.state.discussed)
-
     return (
       <div>
         {this.state.messages.map((m, key) => (
-          <Message key={key} who={m.who}>
-            <Text>{m.message}</Text>
-          </Message>
+          <Message message={m.message} who={m.who}/>
         ))}
 
-        {this.state.isTyping && <div>Panu is typing...</div>}
+        {this.state.isTyping && <Typing/>}
 
         {nextAvailableTopic && this.state.isReady &&
           <button onClick={() => this.selectNextTopic(nextAvailableTopic)}>
