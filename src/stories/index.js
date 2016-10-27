@@ -3,6 +3,7 @@ import { storiesOf, action, linkTo } from '@kadira/storybook';
 
 import Message from './../Message';
 import Typing from './../Typing';
+import Option from './../Option';
 
 storiesOf('Message', module)
   .add('Panu', () => (
@@ -15,4 +16,11 @@ storiesOf('Message', module)
 storiesOf('Typing', module)
   .add('...', () => (
     <Typing/>
+  ));
+
+storiesOf('Option', module)
+  .add('Basic', () => (
+    <Option>
+      ?
+    </Option>
   ));

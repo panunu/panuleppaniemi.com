@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Message = styled.div`
@@ -9,15 +9,12 @@ const Message = styled.div`
 
 const Text = styled.div``;
 
-export default class extends Component {
-  render() {
-    const { who, message } = this.props;
+export default (props) => {
+  const { who, message } = props;
 
-    return (
-      <Message who={who}>
-        <Text>{message}</Text>
-      </Message>
-    );
-  }
+  return (
+    <Message who={who}>
+      <Text>{message}</Text>
+    </Message>
+  );
 }
-
