@@ -5,8 +5,8 @@ import panu from './panu.jpg';
 
 const Avatar = styled.div`
   img {
-    width: 50px;
-    height: 50px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
   }
 `;

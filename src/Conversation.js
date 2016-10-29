@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
 import R from 'ramda';
 
 import Message from './Message';
@@ -7,6 +7,14 @@ import Typing from './Typing';
 import Option from './Option';
 
 import data from './data';
+
+const OptionContainer = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default class extends Component {
   constructor(props) {
@@ -24,7 +32,7 @@ export default class extends Component {
   componentDidMount() {
     setTimeout(
       () => this.setState({
-        messages: [{message: <h1>Oh, hello!</h1>, who: 'Panu'}],
+        messages: [{message: 'Oh, hello!', who: 'Panu'}],
         isReady: true,
         isTyping: false
       }),
@@ -44,17 +52,19 @@ export default class extends Component {
 
         {this.state.isTyping && <Typing/>}
 
-        {nextAvailableTopic && this.state.isReady &&
-          <Option onClick={() => this.selectNextTopic(nextAvailableTopic)}>
-            {nextAvailableTopic.q}
-          </Option>
-        }
+        <OptionContainer>
+          {nextAvailableTopic && this.state.isReady &&
+            <Option onClick={() => this.selectNextTopic(nextAvailableTopic)}>
+              {nextAvailableTopic.q}
+            </Option>
+          }
 
-        {alsoAvailable && this.state.isReady &&
-          <Option onClick={() => this.selectNextTopic(alsoAvailable)}>
-            {alsoAvailable.q}
-          </Option>
-        }
+          {alsoAvailable && this.state.isReady &&
+            <Option onClick={() => this.selectNextTopic(alsoAvailable)}>
+              {alsoAvailable.q}
+            </Option>
+          }
+        </OptionContainer>
       </div>
     );
   }
