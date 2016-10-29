@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import R from 'ramda';
 
@@ -12,8 +13,14 @@ const OptionContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+`;
+
+const Instructions = styled.div`
+  text-align: right;
+  opacity: 0.5;
+  font-size: 90px;
+  margin-right: 70px;
 `;
 
 export default class extends Component {
@@ -40,12 +47,24 @@ export default class extends Component {
     );
   }
 
+  componentDidUpdate() {
+    console.log('tussi');
+
+    // ReactDOM.findDOMNode(this).scrollTop = 0;
+    //
+    // console.log(
+    // ReactDOM.findDOMNode(this)
+    // );
+
+    ReactDOM.findDOMNode(this).scrollIntoView(false);
+  }
+
   render() {
     const nextAvailableTopic = R.head(this.state.available.filter(t => this.state.discussed.indexOf(t.id) === -1));
     const alsoAvailable = nextAvailableTopic && R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
     return (
-      <div>
+      <div style={{padding: 40}}>
         {this.state.messages.map((m, key) => (
           <Message key={key} message={m.message} who={m.who}/>
         ))}
@@ -60,11 +79,15 @@ export default class extends Component {
           }
 
           {alsoAvailable && this.state.isReady &&
-            <Option onClick={() => this.selectNextTopic(alsoAvailable)}>
+            <Option onClick={() => this.selectNextTopic(alsoAvailable)} isAlternative={true}>
               {alsoAvailable.q}
             </Option>
           }
         </OptionContainer>
+
+        {this.state.messages.length == 1 &&
+          <Instructions>☝</Instructions>
+        }
       </div>
     );
   }

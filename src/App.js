@@ -1,29 +1,38 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
 
-import backgroundImage from './panu.jpg';
+import backgroundImage from './img/panu.jpg';
 import Conversation from './Conversation';
 
 const App = styled.div`
-  font-family: "Libre Baskerville", serif;
+  font-family: "Lekton", sans-serif;
   font-weight: 400;
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-position: top right;
-  min-height: 800px;
+  font-size: 22px;
 `;
 
 const Container = styled.div`
   margin: 0 auto;
-  max-width: 700px;
+  width: 800px;
+  height: 100vh;
+  overflow: ${props => props.overflow};
+`;
+
+const Image = styled.img`
+  width: 100%;
 `;
 
 export default class extends Component {
   render() {
     return (
       <App>
-        <Container>
+        <Container overflow="scroll">
+          <div style={{padding: '5%'}}>
           <Conversation/>
+          </div>
+        </Container>
+
+        <Container>
+          <Image src={backgroundImage} style={{opacity: 0.75}}/>
         </Container>
       </App>
     );

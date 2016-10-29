@@ -1,5 +1,7 @@
 import React from 'react';
 
+import fraktio from './img/fraktio.svg';
+
 export default [
   {
     id: 0,
@@ -22,7 +24,9 @@ export default [
     goesWith: 1,
     q: "Do you work somewhere?",
     a: [
-      <span>At <a href="https://fraktio.fi">Fraktio</a>. Perhaps you have heard about us.</span>,
+      <span>At <a href="https://fraktio.fi"><img src={fraktio} style={{width: 100, height: 26.875, marginLeft: -5, marginBottom: -5}}/></a>. Perhaps you have heard about us.</span>,
+      "Partner, member of the board. Cool stuff.",
+      <span>You can also check my <a href="https://fi.linkedin.com/in/panuleppaniemi">LinkedIn profile</a>.</span>,
     ],
   },
   {

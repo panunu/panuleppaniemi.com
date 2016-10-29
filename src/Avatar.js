@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import panu from './panu.jpg';
+import panu from './img/avatar.jpg';
 
 const Avatar = styled.div`
   img {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
   }
 `;
