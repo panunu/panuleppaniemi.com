@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Typing = styled.div`
   padding: 12px 20px;
   margin-left: 35px;
+  margin-bottom: 10px;
   
   opacity: 0.5;
   

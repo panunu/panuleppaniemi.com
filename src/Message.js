@@ -41,6 +41,7 @@ const Text = styled.div`
   font-family: "Lekton", sans-serif;
   font-weight: 400;
   font-size: 22px;
+  line-height: 1.25;
 
   background-color: ${props => props.who === 'Panu' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(245, 245, 245, 0.8)'};
   border-radius: 25px;

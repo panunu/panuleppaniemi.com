@@ -10,29 +10,34 @@ const App = styled.div`
   font-size: 22px;
 `;
 
-const Container = styled.div`
+const ConversationContainer = styled.div`
   margin: 0 auto;
-  width: 800px;
+  max-width: 720px;
   height: 100vh;
-  overflow: ${props => props.overflow};
+  overflow: scroll;
+  padding: 5%;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FCFCFC;
 `;
 
 const Image = styled.img`
-  width: 100%;
+  width: 50%;
 `;
 
 export default class extends Component {
   render() {
     return (
       <App>
-        <Container overflow="scroll">
-          <div style={{padding: '5%'}}>
+        <ConversationContainer>
           <Conversation/>
-          </div>
-        </Container>
+        </ConversationContainer>
 
         <Container>
-          <Image src={backgroundImage} style={{opacity: 0.75}}/>
+          <Image src={backgroundImage} style={{opacity: 0.9}}/>
         </Container>
       </App>
     );

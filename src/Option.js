@@ -5,7 +5,7 @@ const Option = styled.button`
   padding: 10px 15px;
   
   margin-left: ${props => props.isAlternative ? '10px' : '0'}
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
   border-radius: 25px;
   border: none;
@@ -15,6 +15,7 @@ const Option = styled.button`
   font-family: "Lekton", sans-serif;
   font-weight: 400;
   font-size: 22px;
+  line-height: 1.25;
   color: white;
   opacity: 0.5;
   cursor: pointer;

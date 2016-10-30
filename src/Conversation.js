@@ -17,10 +17,12 @@ const OptionContainer = styled.div`
 `;
 
 const Instructions = styled.div`
-  text-align: right;
+  width: 100px;
+  float: right;
   opacity: 0.5;
   font-size: 90px;
   margin-right: 70px;
+  cursor: n-resize;
 `;
 
 export default class extends Component {
@@ -48,14 +50,6 @@ export default class extends Component {
   }
 
   componentDidUpdate() {
-    console.log('tussi');
-
-    // ReactDOM.findDOMNode(this).scrollTop = 0;
-    //
-    // console.log(
-    // ReactDOM.findDOMNode(this)
-    // );
-
     ReactDOM.findDOMNode(this).scrollIntoView(false);
   }
 
@@ -64,7 +58,7 @@ export default class extends Component {
     const alsoAvailable = nextAvailableTopic && R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
     return (
-      <div style={{padding: 40}}>
+      <div>
         {this.state.messages.map((m, key) => (
           <Message key={key} message={m.message} who={m.who}/>
         ))}
