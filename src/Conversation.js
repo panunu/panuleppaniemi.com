@@ -80,7 +80,7 @@ export default class extends Component {
         </OptionContainer>
 
         {this.state.messages.length == 1 &&
-          <Instructions>☝</Instructions>
+          <Instructions title="You could click this button">☝</Instructions>
         }
       </div>
     );

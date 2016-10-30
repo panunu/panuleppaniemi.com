@@ -21,7 +21,12 @@ const ConversationContainer = styled.div`
 const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #FCFCFC;
+  padding: 0;
+  background-color: #f9f9f9;
+`;
+
+const Content = styled.div`
+  width: 50%;
 `;
 
 const Image = styled.img`
@@ -37,7 +42,11 @@ export default class extends Component {
         </ConversationContainer>
 
         <Container>
-          <Image src={backgroundImage} style={{opacity: 0.9}}/>
+          <Image src={backgroundImage} style={{opacity: 0.8}}/>
+
+          <Content>
+            <h1>Panu Leppäniemi</h1>
+          </Content>
         </Container>
       </App>
     );
