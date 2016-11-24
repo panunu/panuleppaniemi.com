@@ -10,6 +10,7 @@
     "ramda": "^0.22.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-dom-server": "^0.0.5",
     "styled-components": "^1.0.9"
   },
   "scripts": {

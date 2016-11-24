@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 import styled from 'styled-components';
 import R from 'ramda';
 
@@ -50,7 +51,9 @@ export default class extends Component {
   }
 
   componentDidUpdate() {
-    ReactDOM.findDOMNode(this).scrollIntoView(false);
+    if (!this.props.isSkipped) {
+      ReactDOM.findDOMNode(this).scrollIntoView(false);
+    }
   }
 
   render() {
@@ -58,7 +61,7 @@ export default class extends Component {
     const alsoAvailable = nextAvailableTopic && R.head(this.state.available.filter(t => t.goesWith == nextAvailableTopic.id).filter(t => this.state.discussed.indexOf(t.id) === -1));
 
     return (
-      <div>
+      <div style={{paddingBottom: 40}}>
         {this.state.messages.map((m, key) => (
           <Message key={key} message={m.message} who={m.who}/>
         ))}
@@ -87,6 +90,8 @@ export default class extends Component {
   }
 
   selectNextTopic(topic) {
+    this.props.cancelSkip();
+
     this.setState({
       isReady: false,
       discussed: R.concat(this.state.discussed, [topic.id]),
@@ -113,7 +118,7 @@ export default class extends Component {
 
               this.setState({isReady: true});
             },
-            message.length * 50 + 200 + Math.random() * 100
+            ReactDOMServer.renderToString(<span>{message}</span>).replace(/<\/?[^>]+(>|$)/g, '').length * 50 + 200 + Math.random() * 100
           );
         },
         Math.random() * 2000 + 1000

@@ -4683,6 +4683,10 @@ react-docgen@^2.12.1:
     nomnom "^1.8.1"
     recast "^0.11.5"
 
+react-dom-server:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-dom-server/-/react-dom-server-0.0.5.tgz#75b6c0f5946e08e84db9dda6eca5e48fed25f723"
+
 react-dom@^15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
