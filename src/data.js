@@ -51,7 +51,7 @@ export default [
       "Arts.",
       "Or some other kind of culture, e.g. music.",
       "Environment, of course.",
-      "Teaching/coaching, holistic well-being, or some other ways to help people!",
+      "Teaching/coaching, holistic well-being, or some way to help people!",
     ]
   },
   {

@@ -102,7 +102,7 @@ export default class extends Component {
           <div>
             <a href="https://fi.linkedin.com/in/panuleppaniemi">LinkedIn</a>,&nbsp;
             <a href="https://github.com/panunu">GitHub</a>,&nbsp;
-            <a href="http://design.panuleppaniemi.com">Design stuff</a>,&nbsp;
+            <a href="http://design.panuleppaniemi.com">Design</a>,&nbsp;
             <a href="https://soundcloud.com/panununu">Music</a>
           </div>
         </Column>
