@@ -1,1 +1,2 @@
-http://panuleppaniemi.netlify.app/* http://panuleppaniemi.com/:splat 301!
+http://panuleppaniemi.netlify.app/*     https://panuleppaniemi.com/:splat   301
+https://panuleppaniemi.netlify.app/*    https://panuleppaniemi.com/:splat   301
