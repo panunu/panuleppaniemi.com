@@ -1,12 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import ReactDOM from 'react-dom/client'
+import { elements } from './elements'
 
-type CanvasItem = {
-  id: string
-  x: number
-  y: number
-  component: React.ReactNode
-}
+const CanvasContent: React.FC = React.memo(() => {
+  return (
+    <>
+      {elements.map((item) => (
+        <div
+          key={item.id}
+          style={{
+            position: 'absolute',
+            left: item.x,
+            top: item.y,
+          }}
+        >
+          {item.component}
+        </div>
+      ))}
+    </>
+  )
+})
 
 const Page: React.FC = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -14,42 +27,55 @@ const Page: React.FC = () => {
   const dragStart = useRef({ x: 0, y: 0 })
   const lastOffset = useRef({ x: 0, y: 0 })
 
-  const canvasItems: CanvasItem[] = [
-    {
-      id: 'item1',
-      x: 100,
-      y: 150,
-      component: (
-        <div style={{ background: 'lightblue', padding: 10 }}>Hello</div>
-      ),
-    },
-    {
-      id: 'item2',
-      x: 300,
-      y: 250,
-      component: (
-        <div style={{ background: 'lightcoral', padding: 10 }}>World</div>
-      ),
-    },
-  ]
-
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
     setIsDragging(true)
     dragStart.current = { x: e.clientX, y: e.clientY }
-  }
+  }, [])
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      const dx = e.clientX - dragStart.current.x
-      const dy = e.clientY - dragStart.current.y
-      setOffset({ x: lastOffset.current.x + dx, y: lastOffset.current.y + dy })
-    }
-  }
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (isDragging) {
+        const dx = e.clientX - dragStart.current.x
+        const dy = e.clientY - dragStart.current.y
+        setOffset({
+          x: lastOffset.current.x + dx,
+          y: lastOffset.current.y + dy,
+        })
+      }
+    },
+    [isDragging, lastOffset]
+  )
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false)
     lastOffset.current = offset
-  }
+  }, [offset])
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    setIsDragging(true)
+    const touch = e.touches[0]
+    dragStart.current = { x: touch.clientX, y: touch.clientY }
+  }, [])
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (isDragging) {
+        const touch = e.touches[0]
+        const dx = touch.clientX - dragStart.current.x
+        const dy = touch.clientY - dragStart.current.y
+        setOffset({
+          x: lastOffset.current.x + dx,
+          y: lastOffset.current.y + dy,
+        })
+      }
+    },
+    [isDragging, lastOffset]
+  )
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false)
+    lastOffset.current = offset
+  }, [offset])
 
   return (
     <div
@@ -60,10 +86,14 @@ const Page: React.FC = () => {
         position: 'relative',
         background: '#f0f0f0',
         cursor: isDragging ? 'grabbing' : 'grab',
+        touchAction: 'none',
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div
         style={{
@@ -71,18 +101,7 @@ const Page: React.FC = () => {
           position: 'absolute',
         }}
       >
-        {canvasItems.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              position: 'absolute',
-              left: item.x,
-              top: item.y,
-            }}
-          >
-            {item.component}
-          </div>
-        ))}
+        <CanvasContent />
       </div>
     </div>
   )
