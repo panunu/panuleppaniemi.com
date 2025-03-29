@@ -5,9 +5,9 @@ import { elements } from './elements'
 const CanvasContent: React.FC = React.memo(() => {
   return (
     <>
-      {elements.map((item) => (
+      {elements.map((item, key) => (
         <div
-          key={item.id}
+          key={key}
           style={{
             position: 'absolute',
             left: item.x,
