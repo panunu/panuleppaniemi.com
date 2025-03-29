@@ -8,7 +8,7 @@ type ItemProps = {
   height?: number
 }
 
-type Item = {
+export type ItemType = {
   x: number
   y: number
   component: React.ReactNode
@@ -22,7 +22,7 @@ const Item: FC<ItemProps> = ({
 }) => {
   return (
     <div
-      className={styles.elementWrapper}
+      className={styles.item}
       style={{
         width,
         height: height,

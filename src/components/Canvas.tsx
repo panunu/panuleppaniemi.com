@@ -1,8 +1,8 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { FC, useCallback, useRef, useState } from 'react'
 import styles from './design.module.scss'
 import data from '../data'
 
-const Content: React.FC = React.memo(() => {
+const Content: FC = React.memo(() => {
   return (
     <>
       {data.map((item, key) => (
@@ -20,6 +20,47 @@ const Content: React.FC = React.memo(() => {
     </>
   )
 })
+
+const Compass: React.FC<{ offset: { x: number; y: number } }> = ({
+  offset,
+}) => {
+  const centerX = window.innerWidth / 2 - offset.x
+  const centerY = window.innerHeight / 2 - offset.y
+
+  const radius = Math.min(window.innerWidth, window.innerHeight) / 2 - 20
+
+  const items = data.map((item, index) => {
+    const dx = item.x - centerX
+    const dy = item.y - centerY
+    const distance = Math.sqrt(dx * dx + dy * dy)
+
+    const buffer = 100
+    const isOffscreen =
+      item.x + offset.x < -buffer ||
+      item.x + offset.x > window.innerWidth + buffer ||
+      item.y + offset.y < -buffer ||
+      item.y + offset.y > window.innerHeight + buffer
+
+    if (!isOffscreen) return null
+
+    const angle = Math.atan2(dy, dx)
+    const dotX = Math.cos(angle) * radius + window.innerWidth / 2
+    const dotY = Math.sin(angle) * radius + window.innerHeight / 2
+
+    return (
+      <div
+        key={index}
+        className={styles.compass}
+        style={{
+          left: dotX,
+          top: dotY,
+        }}
+      />
+    )
+  })
+
+  return <>{items}</>
+}
 
 const Canvas = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
@@ -98,6 +139,8 @@ const Canvas = () => {
       >
         <Content />
       </div>
+
+      <Compass offset={offset} />
     </div>
   )
 }

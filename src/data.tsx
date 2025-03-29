@@ -1,15 +1,21 @@
 import React from 'react'
-import Item from './components/Item'
+import Item, { ItemType } from './components/Item'
 
 import work from './assets/work.jpg'
 
-const data: Item[] = [
+const data: ItemType[] = [
   {
     x: -50,
     y: -50,
     component: (
-      <Item width="100%">
-        <h1>Panu Leppäniemi</h1>
+      <Item width={500}>
+        <header>
+          <h1>Panu Leppäniemi</h1>
+        </header>
+
+        <article>
+          <p>Yes, it's me.</p>
+        </article>
       </Item>
     ),
   },
