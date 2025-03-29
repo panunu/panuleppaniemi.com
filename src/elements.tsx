@@ -1,4 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
+
+type ElementProps = {
+  children: React.ReactNode
+  style: React.CSSProperties
+}
+
+const ElementWrapper: FC<ElementProps> = ({ children, style }) => {
+  return <div style={style}>{children}</div>
+}
 
 type CanvasElement = {
   id: string
@@ -21,7 +30,17 @@ const elements: CanvasElement[] = [
     x: 300,
     y: 250,
     component: (
-      <div style={{ background: 'lightcoral', padding: 10 }}>World</div>
+      <ElementWrapper style={{ height: 300, width: 300 }}>
+        <iframe
+          style={{ borderRadius: 12 }}
+          src="https://open.spotify.com/embed/track/2s0Ea95qHSgtpPKw9pFBoD?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </ElementWrapper>
     ),
   },
 ]
