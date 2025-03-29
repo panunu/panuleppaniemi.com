@@ -1,0 +1,46 @@
+$spacing: 10px;
+$black: #001134;
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: $black;
+}
+
+.elementWrapper {
+  padding: $spacing;
+  border-radius: $spacing * 2;
+  background-color: yellow;
+  user-select: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  opacity: 0.6;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+    animation-play-state: paused;
+  }
+
+  animation: float 5s ease-in-out infinite;
+
+  &:nth-child(2n) {
+    animation-direction: reverse;
+  }
+  &:nth-child(3n) {
+    animation-delay: 1s;
+  }
+}

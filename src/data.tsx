@@ -1,53 +1,23 @@
-import React, { FC } from 'react'
+import React from 'react'
+import Item from './components/Item'
+
 import work from './assets/work.jpg'
 
-type ElementProps = {
-  children: React.ReactNode | any
-  style?: React.CSSProperties
-  width?: number
-  height?: number
-}
-
-const ElementWrapper: FC<ElementProps> = ({
-  children,
-  width = 100,
-  height = undefined,
-  style = {},
-}) => {
-  return (
-    <div
-      style={{
-        padding: 10,
-        borderRadius: 20,
-        backgroundColor: 'yellow',
-        userSelect: 'none',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        opacity: 0.8,
-        // pointerEvents: 'none', only for img tags.
-        width,
-        height: height,
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  )
-}
-
-type CanvasElement = {
-  x: number
-  y: number
-  component: React.ReactNode
-}
-
-const elements: CanvasElement[] = [
+const data: Item[] = [
+  {
+    x: -50,
+    y: -50,
+    component: (
+      <Item width="100%">
+        <h1>Panu Leppäniemi</h1>
+      </Item>
+    ),
+  },
   {
     x: 100,
     y: 150,
     component: (
-      <ElementWrapper>
+      <Item>
         <a
           rel="noopener follow"
           href="https://panuleppaniemi.medium.com"
@@ -66,14 +36,14 @@ const elements: CanvasElement[] = [
             ></path>
           </svg>
         </a>
-      </ElementWrapper>
+      </Item>
     ),
   },
   {
     x: 350,
     y: 350,
     component: (
-      <ElementWrapper height={300} width={300}>
+      <Item height={300} width={300}>
         <iframe
           title="Touchy Touchy ft. EZRA (song in Spotify)"
           src="https://open.spotify.com/embed/track/2s0Ea95qHSgtpPKw9pFBoD?utm_source=generator"
@@ -83,14 +53,14 @@ const elements: CanvasElement[] = [
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
-      </ElementWrapper>
+      </Item>
     ),
   },
   {
     x: 120,
     y: 180,
     component: (
-      <ElementWrapper width={200}>
+      <Item width={200}>
         <a
           rel="noopener follow"
           title="Medium: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1"
@@ -103,14 +73,14 @@ const elements: CanvasElement[] = [
             style={{ borderRadius: 10 }}
           />
         </a>
-      </ElementWrapper>
+      </Item>
     ),
   },
   {
     x: -100,
     y: 800,
     component: (
-      <ElementWrapper width={80}>
+      <Item width={80}>
         <a
           rel="noopener follow"
           href="https://fi.linkedin.com/in/panuleppaniemi"
@@ -172,14 +142,14 @@ const elements: CanvasElement[] = [
             </g>
           </svg>
         </a>
-      </ElementWrapper>
+      </Item>
     ),
   },
   {
     x: 500,
     y: 1000,
     component: (
-      <ElementWrapper
+      <Item
         width={960 / 2}
         height={1270 / 2}
         style={{
@@ -187,9 +157,9 @@ const elements: CanvasElement[] = [
         }}
       >
         &nbsp;
-      </ElementWrapper>
+      </Item>
     ),
   },
 ]
 
-export { elements }
+export default data
