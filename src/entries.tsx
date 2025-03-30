@@ -1,6 +1,8 @@
 import React from 'react'
 import Item, { ItemType } from './components/Item'
 
+import styles from './components/design.module.scss'
+
 import work from './assets/work.jpg'
 import drug from './assets/drug.jpg'
 import navigationalIllustration from './assets/navigational-illustration.jpg'
@@ -8,7 +10,8 @@ import me from './assets/panu-leppaniemi.jpg'
 import skipperi from './assets/skipperi.jpg'
 import fraktio from './assets/fraktio.jpg'
 import ixes from './assets/ixes.jpg'
-import portal from './assets/portal.png'
+import portal from './assets/portal-gate.png'
+import sun from './assets/portal-sun.png'
 
 const entries: ItemType[] = [
   // Intro, my photo.
@@ -372,8 +375,30 @@ const entries: ItemType[] = [
     width: 400,
     height: 400,
     component: (
-      <Item>
-        <img src={portal} style={{ width: '100%', pointerEvents: 'none' }} />
+      <Item
+        title="Portal not yet open..."
+        style={{ cursor: 'not-allowed', opacity: 0.3 }}
+      >
+        <img
+          src={sun}
+          className={styles.sun}
+          style={{
+            width: '20%',
+            pointerEvents: 'none',
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+          }}
+        />
+
+        <img
+          src={portal}
+          style={{
+            width: '100%',
+            pointerEvents: 'none',
+            position: 'relative',
+          }}
+        />
       </Item>
     ),
   },

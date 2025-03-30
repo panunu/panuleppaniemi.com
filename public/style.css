@@ -9,41 +9,11 @@
 body {
     background-color: #001134;
     background-image: url('./noise.png');
-}
+    overflow: hidden;
+    scroll-behavior: unset;
 
-#loader {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 45%;
-}
-
-#loader > div {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin: 0 auto;
-
-    border-radius: 100%;
-    -webkit-animation: scaling 1.0s infinite ease-in-out;
-    animation: scaling 1.0s infinite ease-in-out;
-}
-
-@-webkit-keyframes scaling {
-    0% { -webkit-transform: scale(0) }
-    100% {
-        -webkit-transform: scale(1.0);
-        opacity: 0;
-    }
-}
-
-@keyframes scaling {
-    0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    } 100% {
-          -webkit-transform: scale(1.0);
-          transform: scale(1.0);
-          opacity: 0;
-      }
+    font-family:
+        "Futura",
+        "Jost",
+        sans-serif;
 }
