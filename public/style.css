@@ -6,19 +6,24 @@
     background: transparent;
 }
 
-body {
+html, body {
     width: 100vw;
     height: 100vh;
+    max-height: 100vh;
     overflow: hidden;
+}
 
+body {
     background-color: #000a1f;
     background-image: url('./noise.png');
 
     scroll-behavior: unset;
-    overscroll-behavior: none;
+    overscroll-behavior: contain;
+    overflow-scrolling: touch;
 
     font-family:
         "Futura",
         "Jost",
         sans-serif;
+
 }
