@@ -8,9 +8,10 @@ const entries: ItemType[] = [
   {
     x: 0,
     y: 0,
+    width: 500,
+    height: undefined,
     component: (
       <Item
-        width={500}
         maxWidth="80vw"
         style={{ background: 'none', marginLeft: '15vw', marginTop: '20vh' }}
       >
@@ -38,12 +39,10 @@ const entries: ItemType[] = [
   {
     x: 600,
     y: 800,
+    width: 300,
+    height: 300,
     component: (
-      <Item
-        height={300}
-        width={300}
-        title="A song in Spotify: Touchy Touchy ft. EZRA"
-      >
+      <Item title="A song in Spotify: Touchy Touchy ft. EZRA">
         <iframe
           src="https://open.spotify.com/embed/track/2s0Ea95qHSgtpPKw9pFBoD?utm_source=generator"
           width="100%"
@@ -58,11 +57,10 @@ const entries: ItemType[] = [
   {
     x: -500,
     y: 180,
+    width: 200,
+    height: undefined,
     component: (
-      <Item
-        width={200}
-        title="Medium article: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1"
-      >
+      <Item title="Medium article: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1">
         <a
           rel="noopener follow"
           href="https://panuleppaniemi.medium.com/programming-magic-or-boredom-part-1-b341131b47c2"
@@ -79,6 +77,8 @@ const entries: ItemType[] = [
   {
     x: -580,
     y: 250,
+    width: undefined,
+    height: undefined,
     component: (
       <Item background title="Medium articles/post by me">
         <a rel="noopener follow" href="https://panuleppaniemi.medium.com">
@@ -100,8 +100,10 @@ const entries: ItemType[] = [
   {
     x: -100,
     y: 800,
+    width: 80,
+    height: undefined,
     component: (
-      <Item width={80} background title="Link to my LinkedIn profile">
+      <Item background title="Link to my LinkedIn profile">
         <a
           rel="noopener follow"
           href="https://fi.linkedin.com/in/panuleppaniemi"
@@ -161,6 +163,8 @@ const entries: ItemType[] = [
   {
     x: -100,
     y: 500,
+    width: undefined,
+    height: undefined,
     component: (
       <Item background title="Link to my GitHub profile">
         <a rel="noopener follow" href="https://github.com/panunu">
@@ -180,11 +184,10 @@ const entries: ItemType[] = [
   {
     x: 500,
     y: 1700,
+    width: 960 / 2,
+    height: 1270 / 2,
     component: (
       <Item
-        width={960 / 2}
-        height={1270 / 2}
-        title="Digital art: Work, 2006"
         style={{
           backgroundImage: `url(${work})`,
         }}
@@ -196,11 +199,10 @@ const entries: ItemType[] = [
   {
     x: -100,
     y: -1000,
+    width: 500,
+    height: 4000 / 3 / 2,
     component: (
       <Item
-        width={500}
-        height={4000 / 3 / 2}
-        title="A picture of me in Helsinki, 2021."
         style={{
           backgroundImage: `url(${me})`,
         }}

@@ -13,6 +13,8 @@ const Content: FC = React.memo(() => {
             position: 'absolute',
             left: item.x,
             top: item.y,
+            width: item.width,
+            height: item.height,
           }}
         >
           {item.component}
@@ -55,6 +57,7 @@ const Compass: React.FC<{ offset: { x: number; y: number } }> = ({
         style={{
           left: dotX,
           top: dotY,
+          transform: `scale(${distance / 1000})`,
         }}
       />
     )

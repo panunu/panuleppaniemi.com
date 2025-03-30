@@ -4,9 +4,7 @@ import styles from './design.module.scss'
 type ItemProps = {
   children: React.ReactNode | any
   style?: React.CSSProperties
-  width?: number | string
   maxWidth?: number | string
-  height?: number
   background?: boolean
   title?: string
 }
@@ -15,12 +13,12 @@ export type ItemType = {
   x: number
   y: number
   component: React.ReactNode
+  width?: number | string
+  height?: number
 }
 
 const Item: FC<ItemProps> = ({
   children,
-  width = 100,
-  height = undefined,
   maxWidth = undefined,
   background = false,
   title = undefined,
@@ -32,9 +30,7 @@ const Item: FC<ItemProps> = ({
       title={title}
       aria-label={title}
       style={{
-        width,
         maxWidth,
-        height,
         ...style,
       }}
     >
