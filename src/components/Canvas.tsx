@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useRef, useState } from 'react'
 import styles from './design.module.scss'
+import noise from './../assets/img_2.png'
 import data from '../data'
 
 const Content: FC = React.memo(() => {
@@ -123,6 +124,8 @@ const Canvas = () => {
       className={styles.container}
       style={{
         cursor: isDragging ? 'grabbing' : 'grab',
+        backgroundImage: `url(${noise})`,
+        backgroundPosition: `${offset.x * 1.05}px ${offset.y * 1.05}px`,
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}

@@ -5,6 +5,7 @@ type ItemProps = {
   children: React.ReactNode | any
   style?: React.CSSProperties
   width?: number | string
+  maxWidth?: number | string
   height?: number
 }
 
@@ -18,6 +19,7 @@ const Item: FC<ItemProps> = ({
   children,
   width = 100,
   height = undefined,
+  maxWidth = undefined,
   style = {},
 }) => {
   return (
@@ -25,7 +27,8 @@ const Item: FC<ItemProps> = ({
       className={styles.item}
       style={{
         width,
-        height: height,
+        maxWidth,
+        height,
         ...style,
       }}
     >

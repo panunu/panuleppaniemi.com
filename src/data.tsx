@@ -2,19 +2,31 @@ import React from 'react'
 import Item, { ItemType } from './components/Item'
 
 import work from './assets/work.jpg'
+import me from './assets/panu-leppaniemi.jpg'
 
 const data: ItemType[] = [
   {
-    x: -50,
-    y: -50,
+    x: 10,
+    y: 50,
     component: (
-      <Item width={500}>
+      <Item width={500} maxWidth="80vw" style={{ background: 'none' }}>
         <header>
           <h1>Panu Leppäniemi</h1>
         </header>
 
         <article>
-          <p>Yes, it's me.</p>
+          <p>
+            Hello you! Glad to have you here. In this space, you can find links
+            to some of my work, thoughts and creations.
+          </p>
+
+          <p>
+            And in case your wondering... If I would have to describe myself, I
+            would use the words "creative" and "technologist". Also, I admit
+            being a bit of a generalist, too.
+          </p>
+
+          <p>I wish for something good to happen to you today! 🙏</p>
         </article>
       </Item>
     ),
@@ -102,13 +114,7 @@ const data: ItemType[] = [
             className="lazy-loaded"
             aria-busy="false"
           >
-            <g
-              className="inbug"
-              stroke="none"
-              stroke-width="1"
-              fill="none"
-              fill-rule="evenodd"
-            >
+            <g className="inbug" stroke="none" strokeWidth="1" fill="none">
               <path
                 d="M19.479,0 L1.583,0 C0.727,0 0,0.677 0,1.511 L0,19.488 C0,20.323 0.477,21 1.333,21 L19.229,21 C20.086,21 21,20.323 21,19.488 L21,1.511 C21,0.677 20.336,0 19.479,0"
                 className="bug-text-color"
@@ -152,6 +158,32 @@ const data: ItemType[] = [
     ),
   },
   {
+    x: -100,
+    y: 500,
+    component: (
+      <Item width="32">
+        <a
+          rel="noopener follow"
+          href="https://github.com/panunu"
+          title="GitHub profile"
+          aria-description="Panu Leppäniemi's GitHub profile"
+        >
+          <svg
+            height="32"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            version="1.1"
+            width="32"
+            data-view-component="true"
+            className="octicon octicon-mark-github v-align-middle"
+          >
+            <path d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"></path>
+          </svg>
+        </a>
+      </Item>
+    ),
+  },
+  {
     x: 500,
     y: 1000,
     component: (
@@ -160,6 +192,21 @@ const data: ItemType[] = [
         height={1270 / 2}
         style={{
           backgroundImage: `url(${work})`,
+        }}
+      >
+        &nbsp;
+      </Item>
+    ),
+  },
+  {
+    x: -100,
+    y: -1000,
+    component: (
+      <Item
+        width={500}
+        height={4000 / 3 / 2}
+        style={{
+          backgroundImage: `url(${me})`,
         }}
       >
         &nbsp;

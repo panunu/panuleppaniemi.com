@@ -1,5 +1,7 @@
 $spacing: 10px;
 $black: #001134;
+$white: #fefefe;
+$accent: yellow;
 
 @keyframes float {
   0%, 100% {
@@ -33,13 +35,14 @@ $black: #001134;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: $black;
+  background-color: $black;
+  background-repeat: repeat;
 }
 
 .item {
   padding: $spacing;
   border-radius: $spacing * 2;
-  background-color: yellow;
+  background-color: $accent;
   user-select: none;
   background-size: cover;
   background-repeat: no-repeat;
@@ -47,23 +50,42 @@ $black: #001134;
 
   opacity: 0.6;
   transition: opacity 0.5s;
+  animation: float 5s ease-in-out infinite;
 
   &:hover {
     opacity: 1;
     animation-play-state: paused;
   }
 
-  animation: float 5s ease-in-out infinite;
-
-  &:nth-child(2n) {
-    animation-direction: reverse;
-  }
-  &:nth-child(3n) {
-    animation-delay: 1s;
-  }
-
   svg {
     color: $black;
+  }
+
+  font-family: 'Futura', sans-serif;
+  color: $white;
+
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 $spacing;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 100;
+    margin: 0 0 $spacing;
+  }
+
+  header {
+    padding-bottom: $spacing;
+  }
+
+  article {
+    margin: $spacing 0;
+    text-align: justify;
   }
 }
 
@@ -77,5 +99,5 @@ $black: #001134;
   pointer-events: none;
   z-index: 999;
 
-  animation: flash 3s ease-in-out infinite, fadeIn 1s ease-in 1;
+  animation: flash 5s ease-in-out infinite;
 }
