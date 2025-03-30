@@ -7,6 +7,7 @@ import navigationalIllustration from './assets/navigational-illustration.jpg'
 import me from './assets/panu-leppaniemi.jpg'
 import skipperi from './assets/skipperi.jpg'
 import fraktio from './assets/fraktio.jpg'
+import portal from './assets/portal.png'
 
 const entries: ItemType[] = [
   // Intro, my photo.
@@ -279,7 +280,7 @@ const entries: ItemType[] = [
   },
   // Art, photos...
   {
-    x: -100,
+    x: 300,
     y: -1000,
     width: 500,
     height: 4000 / 3 / 2,
@@ -340,6 +341,17 @@ const entries: ItemType[] = [
         }}
       >
         &nbsp;
+      </Item>
+    ),
+  },
+  {
+    x: 5500,
+    y: -2000,
+    width: 400,
+    height: 400,
+    component: (
+      <Item>
+        <img src={portal} style={{ width: '100%', pointerEvents: 'none' }} />
       </Item>
     ),
   },
