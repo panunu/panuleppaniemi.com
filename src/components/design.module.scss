@@ -1,7 +1,7 @@
 $spacing: 10px;
 $black: #000817;
 $white: #fefefe;
-$accent: yellow;
+$yellow: yellow;
 
 @keyframes float {
   0%, 100% {
@@ -93,18 +93,17 @@ $accent: yellow;
 }
 
 .itemBackground {
-  background-color: $accent;
+  background-color: $yellow;
 }
 
 .compass {
   position: fixed;
-  width: 5px;
-  height: 5px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, $white 0%, transparentize($yellow, 1) 80%);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 999;
 
-  animation: flash 5s ease-in-out infinite;
+  animation: flash 5s ease-in-out infinite, float 5s ease-in-out infinite;
 }
