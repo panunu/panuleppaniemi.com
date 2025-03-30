@@ -2,6 +2,8 @@ import React from 'react'
 import Item, { ItemType } from './components/Item'
 
 import work from './assets/work.jpg'
+import drug from './assets/drug.jpg'
+import navigationalIllustration from './assets/navigational-illustration.jpg'
 import me from './assets/panu-leppaniemi.jpg'
 
 const entries: ItemType[] = [
@@ -77,10 +79,10 @@ const entries: ItemType[] = [
   {
     x: -580,
     y: 250,
-    width: undefined,
+    width: 90,
     height: undefined,
     component: (
-      <Item background title="Medium articles/post by me">
+      <Item background title="Medium articles/posts written by me">
         <a rel="noopener follow" href="https://panuleppaniemi.medium.com">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -182,12 +184,30 @@ const entries: ItemType[] = [
     ),
   },
   {
+    x: -100,
+    y: -1000,
+    width: 500,
+    height: 4000 / 3 / 2,
+    component: (
+      <Item
+        title="Photo of me in Helsinki, 2021"
+        style={{
+          backgroundImage: `url(${me})`,
+        }}
+      >
+        &nbsp;
+      </Item>
+    ),
+  },
+  // Art
+  {
     x: 500,
     y: 1700,
     width: 960 / 2,
     height: 1270 / 2,
     component: (
       <Item
+        title="Digital art: Work, 2006"
         style={{
           backgroundImage: `url(${work})`,
         }}
@@ -197,14 +217,31 @@ const entries: ItemType[] = [
     ),
   },
   {
-    x: -100,
-    y: -1000,
+    x: 1100,
+    y: 1900,
     width: 500,
-    height: 4000 / 3 / 2,
+    height: 500,
     component: (
       <Item
+        title="Digital art: Navigational Illustration, 2008"
         style={{
-          backgroundImage: `url(${me})`,
+          backgroundImage: `url(${navigationalIllustration})`,
+        }}
+      >
+        &nbsp;
+      </Item>
+    ),
+  },
+  {
+    x: 900,
+    y: 2490,
+    width: 400,
+    height: 400,
+    component: (
+      <Item
+        title="Photography: Drug, 2008"
+        style={{
+          backgroundImage: `url(${drug})`,
         }}
       >
         &nbsp;

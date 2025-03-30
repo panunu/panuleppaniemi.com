@@ -57,7 +57,7 @@ const Compass: React.FC<{ offset: { x: number; y: number } }> = ({
         style={{
           left: dotX,
           top: dotY,
-          transform: `scale(${distance / 1000})`,
+          transform: `scale(${distance / 1200})`,
         }}
       />
     )
