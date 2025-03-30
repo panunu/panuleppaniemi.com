@@ -23,7 +23,7 @@ const entries: ItemType[] = [
     component: (
       <Item
         maxWidth="80vw"
-        style={{ background: 'none', marginLeft: '15vw', marginTop: '20vh' }}
+        style={{ background: 'none', marginLeft: '10vw', marginTop: '20vh' }}
       >
         <header>
           <h1>Panu Leppäniemi</h1>
