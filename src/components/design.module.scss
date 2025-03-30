@@ -1,5 +1,5 @@
 $spacing: 10px;
-$black: #001134;
+$black: #000817;
 $white: #fefefe;
 $accent: yellow;
 
@@ -41,16 +41,18 @@ $accent: yellow;
 
 .item {
   padding: $spacing;
-  border-radius: $spacing * 2;
-  background-color: $accent;
+  border-radius: $spacing;
   user-select: none;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 
   opacity: 0.6;
-  transition: opacity 0.5s;
+  transition: opacity 0.5s, box-shadow 0.5s;
   animation: float 5s ease-in-out infinite;
+
+  font-family: 'Futura', sans-serif;
+  color: $white;
 
   &:hover {
     opacity: 1;
@@ -60,10 +62,6 @@ $accent: yellow;
   svg {
     color: $black;
   }
-
-  font-family: 'Futura', sans-serif;
-  color: $white;
-
 
   h1 {
     font-size: 2rem;
@@ -86,7 +84,13 @@ $accent: yellow;
   article {
     margin: $spacing 0;
     text-align: justify;
+
+    animation: fadeIn 5s;
   }
+}
+
+.itemBackground {
+  background-color: $accent;
 }
 
 .compass {

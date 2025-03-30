@@ -7,6 +7,8 @@ type ItemProps = {
   width?: number | string
   maxWidth?: number | string
   height?: number
+  background?: boolean
+  title?: string
 }
 
 export type ItemType = {
@@ -20,11 +22,15 @@ const Item: FC<ItemProps> = ({
   width = 100,
   height = undefined,
   maxWidth = undefined,
+  background = false,
+  title = undefined,
   style = {},
 }) => {
   return (
     <div
-      className={styles.item}
+      className={`${styles.item} ${background ? styles.itemBackground : ''}`}
+      title={title}
+      aria-label={title}
       style={{
         width,
         maxWidth,

@@ -4,12 +4,16 @@ import Item, { ItemType } from './components/Item'
 import work from './assets/work.jpg'
 import me from './assets/panu-leppaniemi.jpg'
 
-const data: ItemType[] = [
+const entries: ItemType[] = [
   {
-    x: 10,
-    y: 50,
+    x: 0,
+    y: 0,
     component: (
-      <Item width={500} maxWidth="80vw" style={{ background: 'none' }}>
+      <Item
+        width={500}
+        maxWidth="80vw"
+        style={{ background: 'none', marginLeft: '15vw', marginTop: '20vh' }}
+      >
         <header>
           <h1>Panu Leppäniemi</h1>
         </header>
@@ -32,16 +36,52 @@ const data: ItemType[] = [
     ),
   },
   {
-    x: 100,
-    y: 150,
+    x: 600,
+    y: 800,
     component: (
-      <Item>
+      <Item
+        height={300}
+        width={300}
+        title="A song in Spotify: Touchy Touchy ft. EZRA"
+      >
+        <iframe
+          src="https://open.spotify.com/embed/track/2s0Ea95qHSgtpPKw9pFBoD?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </Item>
+    ),
+  },
+  {
+    x: -500,
+    y: 180,
+    component: (
+      <Item
+        width={200}
+        title="Medium article: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1"
+      >
         <a
           rel="noopener follow"
-          href="https://panuleppaniemi.medium.com"
-          title="Medium articles"
-          aria-description="Medium posts by Panu Leppäniemi"
+          href="https://panuleppaniemi.medium.com/programming-magic-or-boredom-part-1-b341131b47c2"
         >
+          <img
+            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_6Ah2neXfdgqICz6Q06FZg.jpeg"
+            width="100%"
+            style={{ borderRadius: 10 }}
+          />
+        </a>
+      </Item>
+    ),
+  },
+  {
+    x: -580,
+    y: 250,
+    component: (
+      <Item background title="Medium articles/post by me">
+        <a rel="noopener follow" href="https://panuleppaniemi.medium.com">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
@@ -58,52 +98,13 @@ const data: ItemType[] = [
     ),
   },
   {
-    x: 350,
-    y: 350,
-    component: (
-      <Item height={300} width={300}>
-        <iframe
-          title="Touchy Touchy ft. EZRA (song in Spotify)"
-          src="https://open.spotify.com/embed/track/2s0Ea95qHSgtpPKw9pFBoD?utm_source=generator"
-          width="100%"
-          height="352"
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        ></iframe>
-      </Item>
-    ),
-  },
-  {
-    x: 120,
-    y: 180,
-    component: (
-      <Item width={200}>
-        <a
-          rel="noopener follow"
-          title="Medium: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1"
-          aria-description="Medium: Passing the era of “text input, text output” style of programming – Programming, Magic or Boredom? — Part 1"
-          href="https://panuleppaniemi.medium.com/programming-magic-or-boredom-part-1-b341131b47c2"
-        >
-          <img
-            src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*_6Ah2neXfdgqICz6Q06FZg.jpeg"
-            width="100%"
-            style={{ borderRadius: 10 }}
-          />
-        </a>
-      </Item>
-    ),
-  },
-  {
     x: -100,
     y: 800,
     component: (
-      <Item width={80}>
+      <Item width={80} background title="Link to my LinkedIn profile">
         <a
           rel="noopener follow"
           href="https://fi.linkedin.com/in/panuleppaniemi"
-          title="LinkedIn profile"
-          aria-description="Panu Leppäniemi's LinkedIn profile"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -161,19 +162,12 @@ const data: ItemType[] = [
     x: -100,
     y: 500,
     component: (
-      <Item width="32">
-        <a
-          rel="noopener follow"
-          href="https://github.com/panunu"
-          title="GitHub profile"
-          aria-description="Panu Leppäniemi's GitHub profile"
-        >
+      <Item background title="Link to my GitHub profile">
+        <a rel="noopener follow" href="https://github.com/panunu">
           <svg
-            height="32"
             aria-hidden="true"
             viewBox="0 0 24 24"
             version="1.1"
-            width="32"
             data-view-component="true"
             className="octicon octicon-mark-github v-align-middle"
           >
@@ -185,11 +179,12 @@ const data: ItemType[] = [
   },
   {
     x: 500,
-    y: 1000,
+    y: 1700,
     component: (
       <Item
         width={960 / 2}
         height={1270 / 2}
+        title="Digital art: Work, 2006"
         style={{
           backgroundImage: `url(${work})`,
         }}
@@ -205,6 +200,7 @@ const data: ItemType[] = [
       <Item
         width={500}
         height={4000 / 3 / 2}
+        title="A picture of me in Helsinki, 2021."
         style={{
           backgroundImage: `url(${me})`,
         }}
@@ -215,4 +211,4 @@ const data: ItemType[] = [
   },
 ]
 
-export default data
+export default entries

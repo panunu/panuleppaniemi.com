@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useRef, useState } from 'react'
 import styles from './design.module.scss'
 import noise from './../assets/img_2.png'
-import data from '../data'
+import entries from '../entries'
 
 const Content: FC = React.memo(() => {
   return (
     <>
-      {data.map((item, key) => (
+      {entries.map((item, key) => (
         <div
           key={key}
           style={{
@@ -30,7 +30,7 @@ const Compass: React.FC<{ offset: { x: number; y: number } }> = ({
 
   const radius = Math.min(window.innerWidth, window.innerHeight) / 2 - 20
 
-  const items = data.map((item, index) => {
+  const items = entries.map((item, index) => {
     const dx = item.x - centerX
     const dy = item.y - centerY
     const distance = Math.sqrt(dx * dx + dy * dy)
