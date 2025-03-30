@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useRef, useState } from 'react'
 import styles from './design.module.scss'
-import noise from './../assets/img_2.png'
+import noise from './../assets/noise.png'
 import entries from '../entries'
 
 const Content: FC = React.memo(() => {

@@ -5,8 +5,8 @@ import work from './assets/work.jpg'
 import drug from './assets/drug.jpg'
 import navigationalIllustration from './assets/navigational-illustration.jpg'
 import me from './assets/panu-leppaniemi.jpg'
-import skipperi from './assets/skipperi.png'
-import fraktio from './assets/fraktio.png'
+import skipperi from './assets/skipperi.jpg'
+import fraktio from './assets/fraktio.jpg'
 
 const entries: ItemType[] = [
   // Intro, my photo.
@@ -277,6 +277,7 @@ const entries: ItemType[] = [
       </Item>
     ),
   },
+  // Art, photos...
   {
     x: -100,
     y: -1000,
