@@ -8,6 +8,7 @@
 
 body {
     background-color: #001134;
+    background-image: url('./noise.png');
 }
 
 #loader {

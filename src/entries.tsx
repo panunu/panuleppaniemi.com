@@ -7,6 +7,7 @@ import navigationalIllustration from './assets/navigational-illustration.jpg'
 import me from './assets/panu-leppaniemi.jpg'
 import skipperi from './assets/skipperi.jpg'
 import fraktio from './assets/fraktio.jpg'
+import ixes from './assets/ixes.jpg'
 import portal from './assets/portal.png'
 
 const entries: ItemType[] = [
@@ -195,13 +196,34 @@ const entries: ItemType[] = [
     ),
   },
   {
+    x: -700 + 550,
+    y: 800 + 260,
+    width: 200,
+    height: 300,
+    component: (
+      <Item
+        title="IXES, an app for humane growth. Advisor, investor, and a friend."
+        style={{
+          backgroundImage: `url(${ixes})`,
+          padding: 15,
+        }}
+      >
+        <a
+          rel="noopener follow"
+          href="https://www.ixes.org"
+          style={{ width: '100%', height: '100%', display: 'inline-block' }}
+        ></a>
+      </Item>
+    ),
+  },
+  {
     x: -700 + 300,
     y: 800 + 220,
     width: 200,
     height: 300,
     component: (
       <Item
-        title="Fraktio, a software consultancy I was a partner at for multiple years."
+        title="Fraktio, a software consultancy I was a partner at for multiple years. Those years are very dear to me."
         style={{
           backgroundImage: `url(${fraktio})`,
           padding: 15,
@@ -217,7 +239,7 @@ const entries: ItemType[] = [
   },
   {
     x: -250,
-    y: 1000,
+    y: 990,
     width: 70,
     height: undefined,
     component: (
