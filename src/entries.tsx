@@ -12,6 +12,7 @@ import fraktio from './assets/fraktio.jpg'
 import ixes from './assets/ixes.jpg'
 import portal from './assets/portal-gate.png'
 import sun from './assets/portal-sun.png'
+import paperBridge from './assets/the-paper-bridge.jpg'
 
 const entries: ItemType[] = [
   // Intro, my photo.
@@ -370,8 +371,30 @@ const entries: ItemType[] = [
     ),
   },
   {
-    x: 5500,
-    y: -2000,
+    x: 1500,
+    y: -250,
+    width: 200,
+    height: 330,
+    component: (
+      <Item
+        title="The Paper Bridge"
+        style={{
+          backgroundImage: `url(${paperBridge})`,
+          padding: 15,
+        }}
+      >
+        <a
+          rel="noopener follow"
+          href="https://www.instagram.com/the.paper.bridge/"
+          style={{ width: '100%', height: '100%', display: 'inline-block' }}
+        ></a>
+      </Item>
+    ),
+  },
+  // Book of Panu, perhaps.
+  {
+    x: 4500,
+    y: 0,
     width: 400,
     height: 400,
     component: (

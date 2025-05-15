@@ -21,9 +21,5 @@ body {
     overscroll-behavior: contain;
     overflow-scrolling: touch;
 
-    font-family:
-        "Futura",
-        "Jost",
-        sans-serif;
-
+    font-family: "Futura", "Jost", sans-serif;
 }
