@@ -71,42 +71,24 @@ const Canvas = () => {
   const dragStart = useRef({ x: 0, y: 0 })
   const lastOffset = useRef({ x: 0, y: 0 })
 
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+  const handleStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     setIsDragging(true)
-    dragStart.current = { x: e.clientX, y: e.clientY }
-  }, [])
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (isDragging) {
-        const dx = e.clientX - dragStart.current.x
-        const dy = e.clientY - dragStart.current.y
-        setOffset({
-          x: lastOffset.current.x + dx,
-          y: lastOffset.current.y + dy,
-        })
-      }
-    },
-    [isDragging, lastOffset]
-  )
+    const touch =
+      (e as React.TouchEvent).touches?.[0] ?? (e as React.MouseEvent)
 
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false)
-    lastOffset.current = offset
-  }, [offset])
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    setIsDragging(true)
-    const touch = e.touches[0]
     dragStart.current = { x: touch.clientX, y: touch.clientY }
   }, [])
 
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
+  const handleMove = useCallback(
+    (e: React.MouseEvent | React.TouchEvent) => {
       if (isDragging) {
-        const touch = e.touches[0]
+        const touch =
+          (e as React.TouchEvent).touches?.[0] ?? (e as React.MouseEvent)
+
         const dx = touch.clientX - dragStart.current.x
         const dy = touch.clientY - dragStart.current.y
+
         setOffset({
           x: lastOffset.current.x + dx,
           y: lastOffset.current.y + dy,
@@ -116,7 +98,7 @@ const Canvas = () => {
     [isDragging, lastOffset]
   )
 
-  const handleTouchEnd = useCallback(() => {
+  const handleEnd = useCallback(() => {
     setIsDragging(false)
     lastOffset.current = offset
   }, [offset])
@@ -127,12 +109,12 @@ const Canvas = () => {
       style={{
         cursor: isDragging ? 'grabbing' : 'grab',
       }}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleStart}
+      onMouseMove={handleMove}
+      onMouseUp={handleEnd}
+      onTouchStart={handleStart}
+      onTouchMove={handleMove}
+      onTouchEnd={handleEnd}
     >
       <div
         style={{
