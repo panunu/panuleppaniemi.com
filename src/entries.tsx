@@ -39,7 +39,7 @@ const entries: ItemType[] = [
           <p>
             And in case your wondering... If I would have to describe myself, I
             would use the words "creative" and "technologist". Also, I admit
-            being a bit of a generalist, too.
+            being a bit of a generalist, so I can run a business, too.
           </p>
 
           <p>I wish for something good to happen to you today! 🙏</p>
@@ -63,6 +63,28 @@ const entries: ItemType[] = [
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         ></iframe>
+      </Item>
+    ),
+  },
+  {
+    x: 920,
+    y: 900,
+    width: 300,
+    height: 300,
+    component: (
+      <Item title="Another song in Spotify: That's how you've been seen">
+        <iframe src="https://open.spotify.com/embed/track/0PUsFYK8MeX6kKPVVwUvDS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </Item>
+    ),
+  },
+  {
+    x: 450,
+    y: 1300,
+    width: 300,
+    height: 300,
+    component: (
+      <Item title="A yet another song in Spotify: Zero reasons why you're not mine">
+        <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/2GlUo4Q762EwClVraNmFzR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </Item>
     ),
   },
