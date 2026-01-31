@@ -16,6 +16,8 @@ html, body {
 body {
     background-color: #000a1f;
     background-image: url('./noise.png');
+    background-position: 0 0;
+    transition: background-position 0.15s ease-out;
 
     scroll-behavior: unset;
     overscroll-behavior: contain;

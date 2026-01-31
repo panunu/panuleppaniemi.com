@@ -73,18 +73,33 @@ const entries: ItemType[] = [
     height: 300,
     component: (
       <Item title="Another song in Spotify: That's how you've been seen">
-        <iframe src="https://open.spotify.com/embed/track/0PUsFYK8MeX6kKPVVwUvDS?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/track/0PUsFYK8MeX6kKPVVwUvDS?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
       </Item>
     ),
   },
   {
     x: 450,
-    y: 1300,
+    y: 1200,
     width: 300,
     height: 300,
     component: (
       <Item title="A yet another song in Spotify: Zero reasons why you're not mine">
-        <iframe data-testid="embed-iframe" src="https://open.spotify.com/embed/track/2GlUo4Q762EwClVraNmFzR?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe
+          data-testid="embed-iframe"
+          src="https://open.spotify.com/embed/track/2GlUo4Q762EwClVraNmFzR?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
       </Item>
     ),
   },
