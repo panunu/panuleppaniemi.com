@@ -411,7 +411,7 @@ const entries: ItemType[] = [
   {
     x: 1400,
     y: -300,
-    width: 320,
+    width: 400,
     height: 60,
     component: (
       <Item
