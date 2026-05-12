@@ -409,10 +409,10 @@ const entries: ItemType[] = [
     ),
   },
   {
-    x: 1500,
-    y: -250,
-    width: 400,
-    height: 200,
+    x: 1400,
+    y: -300,
+    width: 320,
+    height: 60,
     component: (
       <Item
         title="Directorate-General for Sustainability, Ethics, Public Policy and Outrage"
