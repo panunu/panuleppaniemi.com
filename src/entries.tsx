@@ -13,6 +13,7 @@ import ixes from './assets/ixes.jpg'
 import portal from './assets/portal-gate.png'
 import sun from './assets/portal-sun.png'
 import paperBridge from './assets/the-paper-bridge.jpg'
+import dgSeppo from './assets/dg-seppo.png'
 
 const entries: ItemType[] = [
   // Intro, my photo.
@@ -410,6 +411,27 @@ const entries: ItemType[] = [
   {
     x: 1500,
     y: -250,
+    width: 400,
+    height: 200,
+    component: (
+      <Item
+        title="Directorate-General for Sustainability, Ethics, Public Policy and Outrage"
+        style={{
+          backgroundImage: `url(${dgSeppo})`,
+          padding: 15,
+        }}
+      >
+        <a
+          rel="noopener follow"
+          href="https://panunu.github.io/directorate-general-for-sustainability-outrage/"
+          style={{ width: '100%', height: '100%', display: 'inline-block' }}
+        ></a>
+      </Item>
+    ),
+  },
+  {
+    x: 1800,
+    y: -150,
     width: 200,
     height: 330,
     component: (
