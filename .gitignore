@@ -15,4 +15,5 @@ build/*
 # misc
 .DS_Store
 .env
+*.bak
 npm-debug.log
