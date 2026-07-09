@@ -22,6 +22,7 @@ const entries: ItemType[] = [
     y: 0,
     width: 500,
     height: undefined,
+    focusable: false,
     component: (
       <Item
         maxWidth="80vw"
@@ -456,6 +457,7 @@ const entries: ItemType[] = [
     y: 0,
     width: 400,
     height: 400,
+    focusable: false,
     component: (
       <Item
         title="Portal not yet open..."

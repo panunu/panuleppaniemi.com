@@ -105,6 +105,12 @@ $yellow: yellow;
   background-color: $yellow;
 }
 
+.focused .item {
+  opacity: 1;
+  animation-play-state: paused;
+  box-shadow: 0 0 30px 6px transparentize($white, 0.5);
+}
+
 .compass {
   position: fixed;
   width: 6px;

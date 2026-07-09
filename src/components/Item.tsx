@@ -15,6 +15,8 @@ export type ItemType = {
   component: React.ReactNode
   width?: number | string
   height?: number
+  // Set false to skip this entry in the Tab focus cycle (e.g. intro, portal).
+  focusable?: boolean
 }
 
 const Item: FC<ItemProps> = ({
