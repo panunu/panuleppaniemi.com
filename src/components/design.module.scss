@@ -1,25 +1,22 @@
-$spacing: 10px;
-$black: #000817;
-$white: #fefefe;
-$yellow: yellow;
+$paper: #ffffff;
+$ink: #111111;
+$muted: #8c8c8c;
+$hairline: #e6e6e6;
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
+$thin: 100;
+$semibold: 600;
 
-@keyframes flash {
-  0%, 100% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-}
+// The only colour on the page besides the photographs. A term borrows one on
+// hover, then gives it back. Four of them: the count is the hover cycle's
+// length, and it has to stay co-prime with the 3/5/7 cycles below — at five,
+// every italic term would land on the same hue.
+$accents: #1f5fd0, #d4491f, #1f8a4c, #7a2ff2;
+
+// The air between a column's content and its hairline. Named because the
+// portrait has to reach past it.
+$gutter: 3vw;
+
+$mobile: 800px;
 
 @keyframes fadeIn {
   0% {
@@ -30,102 +27,289 @@ $yellow: yellow;
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(2);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}
-
-.container {
+.site {
+  display: flex;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  position: relative;
+  height: 100dvh;
+  background: $paper;
+  color: $ink;
+
+  cursor: default;
+
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
 }
 
-.item {
-  width: 100%;
-  height: 100%;
+.column {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
 
-  padding: $spacing;
-  border-radius: $spacing;
-  user-select: none;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y proximity;
+  overscroll-behavior: contain;
 
-  opacity: 0.6;
-  transition: opacity 0.5s, box-shadow 0.5s;
-  animation: float 5s ease-in-out infinite;
+  // Matches the stack's padding, so snapping keeps the air around an item
+  // instead of pinning it flush against the top edge.
+  scroll-padding: 12vh 0;
 
-  color: $white;
+  border-right: 1px solid $hairline;
 
-  &:hover {
-    opacity: 1;
-    animation-play-state: paused;
+  &:last-child {
+    border-right: 0;
   }
 
-  svg {
-    color: $black;
+  // The columns are the whole page; no scrollbar furniture, please.
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 
+  // Mobile mirrors the idea sideways: rows that scroll horizontally.
+  @media (max-width: $mobile) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    scroll-padding: 0 8vw;
+
+    border-right: 0;
+    border-bottom: 1px solid $hairline;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12vh $gutter;
+  gap: 12vh;
+
+  @media (max-width: $mobile) {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: max-content;
+    padding: 0 8vw;
+    gap: 8vw;
+  }
+}
+
+.stack > * {
+  scroll-snap-align: start;
+
+  @media (max-width: $mobile) {
+    scroll-snap-align: center;
+  }
+}
+
+// Name.
+.name {
   h1 {
-    font-size: 2rem;
-    line-height: 1;
-    font-weight: 600;
-    margin: 0 0 $spacing;
-  }
-
-  p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    font-weight: 400;
-    margin: 0 0 $spacing;
-  }
-
-  header {
-    padding-bottom: $spacing;
-  }
-
-  article {
-    margin: $spacing 0;
-    text-align: justify;
-
-    animation: fadeIn 5s;
+    font-size: clamp(2.6rem, 4.4vw, 5rem);
+    font-weight: $thin;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
   }
 }
 
-.itemBackground {
-  background-color: $yellow;
+.portrait {
+  // Reaches back over the stack's gutter to span the column, hairline to hairline.
+  width: calc(100% + #{$gutter * 2});
+  margin-left: -$gutter;
+
+  animation: fadeIn 2s;
+
+  img {
+    display: block;
+    width: 100%;
+    filter: grayscale(1);
+    transition: filter 0.6s;
+  }
+
+  &:hover img {
+    filter: grayscale(0);
+  }
+
+  figcaption {
+    // The picture bleeds; the caption stays on the same line as the name.
+    margin: 0.8rem 0 0 $gutter;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: $muted;
+  }
+
+  @media (max-width: $mobile) {
+    // Height-bound in a row: the portrait sizes itself off the row, not the page,
+    // and the image takes its width from its own aspect ratio.
+    height: 78%;
+    width: auto;
+    margin-left: 0;
+
+    img {
+      height: calc(100% - 2rem);
+      width: auto;
+    }
+
+    figcaption {
+      margin-left: 0;
+    }
+  }
 }
 
-.focused .item {
-  opacity: 1;
-  animation-play-state: paused;
-  box-shadow: 0 0 30px 6px transparentize($white, 0.5);
+// Cloud. One mass of terms — the only separation is weight and slant.
+.columnCloud {
+  .stack {
+    display: block;
+    padding: 12vh 1.5vw;
+
+    @media (max-width: $mobile) {
+      // Wider than the viewport, so the texture wraps and then scrolls sideways.
+      width: 220vw;
+      padding: 4vh 8vw;
+    }
+  }
 }
 
-.compass {
+.term {
+  font-size: clamp(1.05rem, 1.45vw, 1.6rem);
+  font-weight: $thin;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  // No spaces between terms, so let lines break wherever they must.
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  color: $ink;
+
+  // Weight, slant and tone run on cycles of 3, 5 and 7. Co-prime lengths mean
+  // the combination only repeats every 105 terms — the eye reads it as random.
+  // Each cycle sets one property, so they layer instead of overriding.
+  span:nth-child(3n + 2) {
+    font-weight: $semibold;
+  }
+
+  span:nth-child(5n + 3) {
+    font-style: italic;
+  }
+
+  span:nth-child(7n + 5) {
+    color: $muted;
+  }
+
+  span {
+    transition: color 0.25s;
+  }
+
+  // Hover picks one term out of the mess and gives it a colour. The cycle is 4
+  // long, against the 3/5/7 above — the hue is its own thing, not a tell for
+  // weight or slant. Listed last so it beats the gray cycle.
+  @each $accent in $accents {
+    span:nth-child(#{length($accents)}n + #{index($accents, $accent)}):hover {
+      color: $accent;
+    }
+  }
+}
+
+// Works.
+.columnWork {
+  .stack {
+    gap: 0;
+    padding: 12vh $gutter;
+    width: 100%;
+
+    @media (max-width: $mobile) {
+      width: max-content;
+      padding: 0 8vw;
+      gap: 3vw;
+    }
+  }
+}
+
+.label {
+  font-size: 0.65rem;
+  font-weight: $semibold;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $muted;
+
+  margin: 3.5rem 0 1rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @media (max-width: $mobile) {
+    margin: 0;
+    writing-mode: vertical-rl;
+  }
+}
+
+.work {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding: 0.35rem 0;
+
+  color: $ink;
+  text-decoration: none;
+  transition: opacity 0.3s;
+  opacity: 0.75;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+
+  &:focus-visible .workTitle {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+}
+
+.workTitle {
+  font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+  font-weight: $thin;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.workNote {
+  font-size: 0.7rem;
+  font-style: italic;
+  font-weight: $thin;
+  color: $muted;
+  white-space: nowrap;
+}
+
+// Hover preview, pinned to the cursor.
+.preview {
   position: fixed;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, $white 0%, transparentize($yellow, 1) 80%);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 10;
   pointer-events: none;
-  z-index: 999;
+  width: 22vw;
+  max-width: 340px;
 
-  animation: flash 5s ease-in-out infinite, float 5s ease-in-out infinite;
-}
+  animation: fadeIn 0.4s;
 
-.sun {
-  border-radius: 50%;
-  box-shadow: inset 0 0 10px 30px transparentize($white, 0.8), 0 0 20px 20px transparentize($white, 0.8);
+  img {
+    display: block;
+    width: 100%;
+  }
 
-  animation: rotate 220s linear infinite;
+  // No cursor to follow.
+  @media (hover: none) {
+    display: none;
+  }
 }

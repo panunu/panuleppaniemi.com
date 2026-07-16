@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Canvas from './components/Canvas'
+import Site from './components/Site'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<Canvas />)
+ReactDOM.createRoot(document.getElementById('root')!).render(<Site />)
