@@ -6,6 +6,7 @@ import Work from './components/Work'
 import styles from './components/design.module.scss'
 
 import me from './assets/panu-leppaniemi.jpg'
+import morningFarewell from './assets/panu-morning-farewell.jpeg'
 import work from './assets/work.jpg'
 import drug from './assets/drug.jpg'
 import navigationalIllustration from './assets/navigational-illustration.jpg'
@@ -40,7 +41,7 @@ const entries: Entry[] = [
   {
     column: 'name',
     component: (
-      <figure className={styles.portrait}>
+      <figure className={styles.picture}>
         <img src={me} alt="Panu Leppäniemi, Helsinki, 2021" />
         <figcaption>Helsinki, 2021</figcaption>
       </figure>
@@ -57,11 +58,23 @@ const entries: Entry[] = [
           consulting, architecture, teams, culture, leadership,
           generalist, strategy, photography, digital art, writing, code, systems thinking, services, design, prototypes,
           entrepreneurship, sustainability, ethics, community, advising,
-          investing, board work, technologist, creative, humane growth,
-          sustainability, people, open source, experiments, hiring, scaling, operations,
-          storytelling, attention, workshops, talks, collaboration, music, 
+          investing, board work, events, humane growth,
+          opensource, experiments, hiring, scaling, operations,
+          storytelling, attention, workshops, collaboration, music, 
           patience, iteration, ownership, wonder`}
       </Term>
+    ),
+  },
+  {
+    column: 'cloud',
+    component: (
+      <figure className={styles.picture}>
+        <img
+          src={morningFarewell}
+          alt="A story in a darkened hall, the audience seated in a circle around a lit window"
+        />
+        <figcaption>Photo by Boris Hars-Tschachotin, 2026</figcaption>
+      </figure>
     ),
   },
 

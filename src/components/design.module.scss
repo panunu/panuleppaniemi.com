@@ -12,9 +12,11 @@ $semibold: 600;
 // every italic term would land on the same hue.
 $accents: #1f5fd0, #d4491f, #1f8a4c, #7a2ff2;
 
-// The air between a column's content and its hairline. Named because the
-// portrait has to reach past it.
+// The air between a column's content and its hairline. Named because pictures
+// have to reach back past it. The cloud keeps less of it: it is a texture, and
+// wants to run close to the edge.
 $gutter: 3vw;
+$cloudGutter: 1.5vw;
 
 $mobile: 800px;
 
@@ -88,10 +90,14 @@ $mobile: 800px;
 }
 
 .stack {
+  // Published as a variable so a picture can reach back over it without
+  // knowing which column it landed in.
+  --gutter: #{$gutter};
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 12vh $gutter;
+  padding: 12vh var(--gutter);
   gap: 12vh;
 
   @media (max-width: $mobile) {
@@ -123,10 +129,10 @@ $mobile: 800px;
   }
 }
 
-.portrait {
+.picture {
   // Reaches back over the stack's gutter to span the column, hairline to hairline.
-  width: calc(100% + #{$gutter * 2});
-  margin-left: -$gutter;
+  width: calc(100% + var(--gutter) * 2);
+  margin-left: calc(var(--gutter) * -1);
 
   animation: fadeIn 2s;
 
@@ -142,8 +148,8 @@ $mobile: 800px;
   }
 
   figcaption {
-    // The picture bleeds; the caption stays on the same line as the name.
-    margin: 0.8rem 0 0 $gutter;
+    // The picture bleeds; the caption stays on the column's text line.
+    margin: 0.8rem 0 0 var(--gutter);
     font-size: 0.7rem;
     font-style: italic;
     color: $muted;
@@ -170,13 +176,35 @@ $mobile: 800px;
 // Cloud. One mass of terms — the only separation is weight and slant.
 .columnCloud {
   .stack {
+    --gutter: #{$cloudGutter};
+
     display: block;
-    padding: 12vh 1.5vw;
+    padding: 12vh var(--gutter);
 
     @media (max-width: $mobile) {
-      // Wider than the viewport, so the texture wraps and then scrolls sideways.
-      width: 220vw;
+      // Back to the row model: the texture scrolls past, then the picture.
+      display: flex;
       padding: 4vh 8vw;
+    }
+  }
+
+  // The stack is a block here, so its gap does not apply — the picture keeps
+  // its own distance from the texture.
+  .picture {
+    margin-top: 12vh;
+  }
+
+  @media (max-width: $mobile) {
+    .term {
+      // Wider than the viewport, so the texture wraps into a slab and then
+      // scrolls sideways rather than growing taller than the row.
+      width: 200vw;
+      flex: none;
+    }
+
+    // Back to a flex row, where the gap does the spacing.
+    .picture {
+      margin-top: 0;
     }
   }
 }
@@ -189,6 +217,7 @@ $mobile: 800px;
   // No spaces between terms, so let lines break wherever they must.
   overflow-wrap: anywhere;
   word-break: break-word;
+  text-align: justify;
   color: $ink;
 
   // Weight, slant and tone run on cycles of 3, 5 and 7. Co-prime lengths mean
