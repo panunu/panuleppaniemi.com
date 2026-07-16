@@ -127,6 +127,50 @@ $mobile: 800px;
     letter-spacing: -0.03em;
     white-space: nowrap;
   }
+
+  .nameLine {
+    display: block;
+  }
+
+  // Hover stands a single letter up: the lowercase fades down as the capital
+  // rises from the baseline in its place. The capital is taken out of flow and
+  // centred on the letter, so its extra width overhangs a hair either side
+  // instead of shoving the rest of the name along.
+  .letter {
+    position: relative;
+    display: inline-block;
+  }
+
+  .lower,
+  .upper {
+    display: inline-block;
+    transition: opacity 0.1s, transform 0.2s;
+  }
+
+  .upper {
+    position: absolute;
+    left: 50%;
+    top: 0;
+
+    text-transform: uppercase;
+    user-select: none;
+
+    opacity: 0;
+    transform: translateX(-50%) scale(0.82);
+    transform-origin: 50% 100%;
+  }
+
+  .letter:hover {
+    .lower {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+
+    .upper {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
 }
 
 .picture {

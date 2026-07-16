@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Label from './components/Label'
+import Name from './components/Name'
 import Term from './components/Term'
 import Work from './components/Work'
 import styles from './components/design.module.scss'
@@ -28,15 +29,7 @@ const entries: Entry[] = [
   // Name, picture.
   {
     column: 'name',
-    component: (
-      <header className={styles.name}>
-        <h1>
-          Panu
-          <br />
-          Leppäniemi
-        </h1>
-      </header>
-    ),
+    component: <Name>{`Panu\nLeppäniemi`}</Name>,
   },
   {
     column: 'name',
