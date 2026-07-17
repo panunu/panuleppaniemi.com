@@ -21,6 +21,8 @@ $accents: #1f5fd0, #d4491f, #1f8a4c, #7a2ff2;
 // wants to run close to the edge.
 $gutter: 3vw;
 $cloudGutter: 1.5vw;
+// One screen wide is narrow enough that every section wants the same air.
+$mobileGutter: 8vw;
 
 $mobile: 800px;
 
@@ -45,7 +47,12 @@ $mobile: 800px;
   cursor: default;
 
   @media (max-width: $mobile) {
+    // The sections stack, one under the other, and the page is the only thing
+    // that scrolls — downwards, never sideways.
     flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
   }
 }
 
@@ -72,10 +79,16 @@ $mobile: 800px;
     display: none;
   }
 
-  // Mobile mirrors the idea sideways: rows that scroll horizontally.
+  // Mobile: a screen each at least, growing taller when the content asks for
+  // it. Nothing scrolls within a section — it is all one page going down.
   @media (max-width: $mobile) {
-    overflow-x: auto;
-    overflow-y: hidden;
+    flex: none;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    overflow: visible;
+    overscroll-behavior: auto;
 
     border-right: 0;
     border-bottom: 1px solid $hairline;
@@ -98,12 +111,12 @@ $mobile: 800px;
   gap: 12vh;
 
   @media (max-width: $mobile) {
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    width: max-content;
-    padding: 0 8vw;
-    gap: 8vw;
+    --gutter: #{$mobileGutter};
+
+    // A plain column the width of the screen. Nothing to wrap into: content
+    // that outgrows the section makes the section taller.
+    padding: 6vh var(--gutter);
+    gap: 4vh;
   }
 }
 
@@ -188,22 +201,8 @@ $mobile: 800px;
     color: $muted;
   }
 
-  @media (max-width: $mobile) {
-    // Height-bound in a row: the portrait sizes itself off the row, not the page,
-    // and the image takes its width from its own aspect ratio.
-    height: 78%;
-    width: auto;
-    margin-left: 0;
-
-    img {
-      height: calc(100% - 2rem);
-      width: auto;
-    }
-
-    figcaption {
-      margin-left: 0;
-    }
-  }
+  // The same bleed carries to mobile: the stack is the width of the screen, so
+  // reaching back over the gutter puts the picture edge to edge.
 }
 
 // Cloud. One mass of terms — the only separation is weight and slant.
@@ -215,9 +214,13 @@ $mobile: 800px;
     padding: 12vh var(--gutter);
 
     @media (max-width: $mobile) {
-      // Back to the row model: the texture scrolls past, then the picture.
+      // Two classes here outrank the mobile --gutter on .stack, so the cloud
+      // would keep its tight desktop gutter unless it is restated.
+      --gutter: #{$mobileGutter};
+
+      // Back to the wrapping column the other sections use.
       display: flex;
-      padding: 4vh 8vw;
+      padding: 6vh var(--gutter);
     }
   }
 
@@ -235,15 +238,15 @@ $mobile: 800px;
 
   @media (max-width: $mobile) {
     .term {
-      // Wider than the viewport, so the texture wraps into a slab and then
-      // scrolls sideways rather than growing taller than the row.
-      width: 200vw;
+      // A flex item would otherwise take its max-content width — the whole
+      // texture on one line, running far off the side of the screen.
+      width: 100%;
       flex: none;
-      // The row is a third of the screen here — a screen-tall floor would burst it.
+      // The floor is the desktop column's; here the section already is a screen.
       min-height: 0;
     }
 
-    // Back to a flex row, where the gap does the spacing.
+    // A flex column again, where the gap does the spacing.
     .picture {
       margin-top: 0;
     }
@@ -298,9 +301,10 @@ $mobile: 800px;
     width: 100%;
 
     @media (max-width: $mobile) {
-      width: max-content;
-      padding: 0 8vw;
-      gap: 3vw;
+      --gutter: #{$mobileGutter};
+
+      padding: 6vh var(--gutter);
+      gap: 0;
     }
   }
 }
@@ -316,11 +320,6 @@ $mobile: 800px;
 
   &:first-child {
     margin-top: 0;
-  }
-
-  @media (max-width: $mobile) {
-    margin: 0;
-    writing-mode: vertical-rl;
   }
 }
 
@@ -344,6 +343,13 @@ $mobile: 800px;
     text-decoration: underline;
     text-underline-offset: 0.25em;
   }
+
+  @media (max-width: $mobile) {
+    // Take the screen's width, so a long note wraps under its title instead of
+    // running off the side of it.
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 
 .workTitle {
@@ -361,6 +367,11 @@ $mobile: 800px;
   font-weight: $light;
   color: $noteInk;
   white-space: nowrap;
+
+  @media (max-width: $mobile) {
+    // A phone is too narrow to promise a note a line of its own.
+    white-space: normal;
+  }
 }
 
 // Hover preview, pinned to the cursor.
