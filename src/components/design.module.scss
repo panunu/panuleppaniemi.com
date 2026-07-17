@@ -16,12 +16,7 @@ $semibold: 600;
 // every italic term would land on the same hue.
 $accents: #1f5fd0, #d4491f, #1f8a4c, #7a2ff2;
 
-// The air between a column's content and its hairline. Named because pictures
-// have to reach back past it. The cloud keeps less of it: it is a texture, and
-// wants to run close to the edge.
 $gutter: 3vw;
-$cloudGutter: 1.5vw;
-// One screen wide is narrow enough that every section wants the same air.
 $mobileGutter: 8vw;
 
 $mobile: 800px;
@@ -134,10 +129,6 @@ $mobile: 800px;
     display: block;
   }
 
-  // Hover stands a single letter up: the lowercase fades down as the capital
-  // rises from the baseline in its place. The capital is taken out of flow and
-  // centred on the letter, so its extra width overhangs a hair either side
-  // instead of shoving the rest of the name along.
   .letter {
     position: relative;
     display: inline-block;
@@ -176,7 +167,6 @@ $mobile: 800px;
 }
 
 .picture {
-  // Reaches back over the stack's gutter to span the column, hairline to hairline.
   width: calc(100% + var(--gutter) * 2);
   margin-left: calc(var(--gutter) * -1);
 
@@ -194,79 +184,42 @@ $mobile: 800px;
   }
 
   figcaption {
-    // The picture bleeds; the caption stays on the column's text line.
     margin: 0.8rem 0 0 var(--gutter);
     font-size: 0.7rem;
     font-style: italic;
+    font-weight: $light;
     color: $muted;
   }
-
-  // The same bleed carries to mobile: the stack is the width of the screen, so
-  // reaching back over the gutter puts the picture edge to edge.
 }
 
-// Cloud. One mass of terms — the only separation is weight and slant.
-.columnCloud {
-  .stack {
-    --gutter: #{$cloudGutter};
+.manifesto {
+  width: 100%;
+  max-width: 34em;
 
-    display: block;
-    padding: 12vh var(--gutter);
+  p {
+    font-size: clamp(0.92rem, 1vw, 1.05rem);
+    font-weight: $light;
+    line-height: 1.65;
+    color: $ink;
 
-    @media (max-width: $mobile) {
-      // Two classes here outrank the mobile --gutter on .stack, so the cloud
-      // would keep its tight desktop gutter unless it is restated.
-      --gutter: #{$mobileGutter};
-
-      // Back to the wrapping column the other sections use.
-      display: flex;
-      padding: 6vh var(--gutter);
-    }
-  }
-
-  .term {
-    // The texture holds a screen of its own however few terms it carries, so
-    // the picture always sits below the fold rather than crowding it.
-    min-height: 100vh;
-  }
-
-  // The stack is a block here, so its gap does not apply — the picture keeps
-  // its own distance from the texture.
-  .picture {
-    margin-top: 12vh;
-  }
-
-  @media (max-width: $mobile) {
-    .term {
-      // A flex item would otherwise take its max-content width — the whole
-      // texture on one line, running far off the side of the screen.
-      width: 100%;
-      flex: none;
-      // The floor is the desktop column's; here the section already is a screen.
-      min-height: 0;
-    }
-
-    // A flex column again, where the gap does the spacing.
-    .picture {
-      margin-top: 0;
+    & + p {
+      margin-top: 1rem;
     }
   }
 }
 
 .term {
+  width: 100%;
+
   font-size: clamp(1.05rem, 1.45vw, 1.6rem);
   font-weight: $thin;
   line-height: 1.35;
   letter-spacing: 0.01em;
-  // No spaces between terms, so let lines break wherever they must.
   overflow-wrap: anywhere;
   word-break: break-word;
   text-align: justify;
   color: $ink;
 
-  // Weight, slant and tone run on cycles of 3, 5 and 7. Co-prime lengths mean
-  // the combination only repeats every 105 terms — the eye reads it as random.
-  // Each cycle sets one property, so they layer instead of overriding.
   span:nth-child(3n + 2) {
     font-weight: $semibold;
   }
@@ -283,9 +236,6 @@ $mobile: 800px;
     transition: color 0.25s;
   }
 
-  // Hover picks one term out of the mess and gives it a colour. The cycle is 4
-  // long, against the 3/5/7 above — the hue is its own thing, not a tell for
-  // weight or slant. Listed last so it beats the gray cycle.
   @each $accent in $accents {
     span:nth-child(#{length($accents)}n + #{index($accents, $accent)}):hover {
       color: $accent;

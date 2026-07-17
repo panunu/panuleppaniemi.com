@@ -11,11 +11,10 @@ import styles from './design.module.scss'
 import entries, { Column } from '../entries'
 import { Preview, PreviewContext } from './preview'
 
-const COLUMNS: Column[] = ['name', 'cloud', 'work']
+const COLUMNS: Column[] = ['name', 'manifesto', 'work']
 
-const CLASS_FOR_COLUMN: Record<Column, string> = {
-  name: styles.columnName,
-  cloud: styles.columnCloud,
+// Only the columns that need styling of their own appear here.
+const CLASS_FOR_COLUMN: Partial<Record<Column, string>> = {
   work: styles.columnWork,
 }
 
@@ -93,7 +92,9 @@ const Site = () => {
         {COLUMNS.map((column) => (
           <section
             key={column}
-            className={`${styles.column} ${CLASS_FOR_COLUMN[column]}`}
+            className={[styles.column, CLASS_FOR_COLUMN[column]]
+              .filter(Boolean)
+              .join(' ')}
           >
             <div className={styles.stack}>
               {entries

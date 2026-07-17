@@ -18,7 +18,7 @@ import paperBridge from './assets/the-paper-bridge.jpg'
 import dgSeppo from './assets/dg-seppo.png'
 
 // Three columns, in reading order. Order within a column is meaningful.
-export type Column = 'name' | 'cloud' | 'work'
+export type Column = 'name' | 'manifesto' | 'work'
 
 export type Entry = {
   column: Column
@@ -40,26 +40,65 @@ const entries: Entry[] = [
       </figure>
     ),
   },
-
-  // The cloud: everything I have done, packed into a texture.
+  // Everything I have done, packed into a texture.
   {
-    column: 'cloud',
+    column: 'name',
     component: (
       <Term>
-        {`start-ups, sharing economy, technology, software, platform business, 
+        {`start-ups, sharing economy, technology, software, platform business,
           engineering, co-founding, marketplaces, product,
           consulting, architecture, teams, culture, leadership,
           generalist, strategy, photography, digital art, writing, code, systems thinking, services, design, prototypes,
           entrepreneurship, sustainability, ethics, community, advising,
           investing, board work, events, humane growth,
           opensource, experiments, hiring, scaling, operations,
-          storytelling, attention, workshops, collaboration, music, 
+          storytelling, attention, workshops, collaboration, music,
           patience, iteration, ownership, wonder`}
       </Term>
     ),
   },
+
+  // The manifesto.
   {
-    column: 'cloud',
+    column: 'manifesto',
+    component: (
+      <article className={styles.manifesto}>
+        <Label>A manifesto</Label>
+
+        <p>
+          It might be a good idea to write a manifesto, don't you think? Not
+          having one adds to the risk that who and what you stand for is
+          dictated by someone else's story, and you will get stuck fulfilling
+          their expectations. Of course, some people are better visionaries and
+          storytellers, so you might end up just fine regardless. But perhaps by
+          writing one or even many, we would find greater ambitions than just
+          dreaming about buying a new, fancier car with this and this many
+          horsepower or this and that fidgety gadgety. As someone once said: it
+          is a true sign of wealth to be able to afford time with others. And
+          what are we here for if not to figure out this life, whatever this is,
+          <i> with</i> others.
+        </p>
+
+        <p>
+          This process of figuring out… well, I am trying to do it with
+          kindness, thoughtfulness (hello systems thinking), sustainability,
+          flexibility – as in there can be two truths – and, when required,
+          assertiveness: I do enjoy building things, fast. I want to see certain
+          changes, certain realisations, happening in our society and in us. For
+          now, it seems like running a business is a good vessel to do so. We
+          need more of these vessels for good, as also many similar vessels have
+          succumbed to, accidentally or not, causing harm.
+        </p>
+
+        <p>
+          Therefore. Let's build good, ambitious, low-hierarchy vessels so we
+          have better stories to tell.
+        </p>
+      </article>
+    ),
+  },
+  {
+    column: 'manifesto',
     component: (
       <figure className={styles.picture}>
         <img
