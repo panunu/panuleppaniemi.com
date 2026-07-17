@@ -50,10 +50,9 @@ const entries: Entry[] = [
           consulting, architecture, teams, culture, leadership,
           generalist, strategy, photography, digital art, writing, code, systems thinking, services, design, prototypes,
           entrepreneurship, sustainability, ethics, community, advising,
-          investing, board work, events, humane growth,
-          opensource, experiments, hiring, scaling, operations,
-          storytelling, attention, workshops, collaboration, music,
-          patience, iteration, ownership, wonder`}
+          investing, board work, events, open source, experiments, hiring, scaling, operations,
+          storytelling, workshops, collaboration, music,
+          iteration, ownership, wonder`}
       </Term>
     ),
   },

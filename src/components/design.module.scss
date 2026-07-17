@@ -60,10 +60,17 @@ $mobile: 800px;
   overflow-x: hidden;
   overscroll-behavior: contain;
 
-  border-right: 1px solid $hairline;
+  // The hairline is painted into the column rather than bordered onto it. A
+  // column clips its content at the padding edge and a border sits outside
+  // that, so a border is somewhere no picture could ever reach — this line sits
+  // inside, where a full-bleed picture runs straight over it.
+  background-image: linear-gradient(to right, $hairline, $hairline);
+  background-size: 1px 100%;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
 
   &:last-child {
-    border-right: 0;
+    background-image: none;
   }
 
   // The columns are the whole page; no scrollbar furniture, please.
@@ -85,7 +92,8 @@ $mobile: 800px;
     overflow: visible;
     overscroll-behavior: auto;
 
-    border-right: 0;
+    // The sections divide horizontally here, and nothing needs to run over it.
+    background-image: none;
     border-bottom: 1px solid $hairline;
 
     &:last-child {
@@ -167,8 +175,11 @@ $mobile: 800px;
 }
 
 .picture {
-  width: calc(100% + var(--gutter) * 2);
-  margin-left: calc(var(--gutter) * -1);
+  // Reaches back over the gutter and a pixel past the column on either side, so
+  // the clip decides the edge: the picture always lands exactly on the hairline
+  // and covers it, however the column's width rounds.
+  width: calc(100% + var(--gutter) * 2 + 2px);
+  margin-left: calc(var(--gutter) * -1 - 1px);
 
   animation: fadeIn 2s;
 
@@ -216,7 +227,7 @@ $mobile: 800px;
   line-height: 1.35;
   letter-spacing: 0.01em;
   overflow-wrap: anywhere;
-  word-break: break-word;
+  word-break: break-all;
   text-align: justify;
   color: $ink;
 
