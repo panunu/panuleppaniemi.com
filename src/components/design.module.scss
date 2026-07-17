@@ -1,9 +1,13 @@
 $paper: #ffffff;
 $ink: #111111;
 $muted: #8c8c8c;
+// A note carries real information — dates, roles — so it sits darker than the
+// labels and the gray terms, which are only scaffolding.
+$noteInk: #4a4a4a;
 $hairline: #e6e6e6;
 
 $thin: 100;
+$light: 300;
 $semibold: 600;
 
 // The only colour on the page besides the photographs. A term borrows one on
@@ -52,12 +56,7 @@ $mobile: 800px;
 
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-snap-type: y proximity;
   overscroll-behavior: contain;
-
-  // Matches the stack's padding, so snapping keeps the air around an item
-  // instead of pinning it flush against the top edge.
-  scroll-padding: 12vh 0;
 
   border-right: 1px solid $hairline;
 
@@ -77,8 +76,6 @@ $mobile: 800px;
   @media (max-width: $mobile) {
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x proximity;
-    scroll-padding: 0 8vw;
 
     border-right: 0;
     border-bottom: 1px solid $hairline;
@@ -107,14 +104,6 @@ $mobile: 800px;
     width: max-content;
     padding: 0 8vw;
     gap: 8vw;
-  }
-}
-
-.stack > * {
-  scroll-snap-align: start;
-
-  @media (max-width: $mobile) {
-    scroll-snap-align: center;
   }
 }
 
@@ -232,6 +221,12 @@ $mobile: 800px;
     }
   }
 
+  .term {
+    // The texture holds a screen of its own however few terms it carries, so
+    // the picture always sits below the fold rather than crowding it.
+    min-height: 100vh;
+  }
+
   // The stack is a block here, so its gap does not apply — the picture keeps
   // its own distance from the texture.
   .picture {
@@ -244,6 +239,8 @@ $mobile: 800px;
       // scrolls sideways rather than growing taller than the row.
       width: 200vw;
       flex: none;
+      // The row is a third of the screen here — a screen-tall floor would burst it.
+      min-height: 0;
     }
 
     // Back to a flex row, where the gap does the spacing.
@@ -350,8 +347,10 @@ $mobile: 800px;
 }
 
 .workTitle {
-  font-size: clamp(1.1rem, 1.5vw, 1.6rem);
-  font-weight: $thin;
+  // Smaller than the name and the terms, and a step heavier to hold its weight
+  // at that size — hairline thin only reads at display sizes.
+  font-size: clamp(0.95rem, 1.15vw, 1.25rem);
+  font-weight: $light;
   letter-spacing: -0.01em;
   line-height: 1.25;
 }
@@ -359,8 +358,8 @@ $mobile: 800px;
 .workNote {
   font-size: 0.7rem;
   font-style: italic;
-  font-weight: $thin;
-  color: $muted;
+  font-weight: $light;
+  color: $noteInk;
   white-space: nowrap;
 }
 

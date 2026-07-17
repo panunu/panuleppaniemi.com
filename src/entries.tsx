@@ -91,7 +91,7 @@ const entries: Entry[] = [
         title="Fraktio"
         href="https://www.fraktio.fi"
         image={fraktio}
-        note="Partner, board member, senior software developer"
+        note="2012–2019 (Partner, board member, senior software developer)"
       />
     ),
   },
@@ -99,11 +99,40 @@ const entries: Entry[] = [
     column: 'work',
     component: (
       <Work
-        title="IXES"
+        title="iXES"
         href="https://www.ixes.org"
         image={ixes}
-        note="Advisor, investor"
+        note="2022–2025 (Advisor, investor)"
       />
+    ),
+  },
+
+  { column: 'work', component: <Label>Elsewhere</Label> },
+  {
+    column: 'work',
+    component: (
+      <Work
+        title="Teaching"
+        href="https://ohjelmistotuotanto.panuleppaniemi.com/"
+        note="2012 (Software production, Metropolia UAS)"
+      />
+    ),
+  },
+  {
+    column: 'work',
+    component: (
+      <Work title="LinkedIn" href="https://fi.linkedin.com/in/panuleppaniemi" />
+    ),
+  },
+  {
+    column: 'work',
+    component: <Work title="GitHub" href="https://github.com/panunu" />,
+  },
+
+  {
+    column: 'work',
+    component: (
+      <Work title="Medium" href="https://panuleppaniemi.medium.com/" />
     ),
   },
 
@@ -120,12 +149,7 @@ const entries: Entry[] = [
   },
   {
     column: 'work',
-    component: (
-      <Work
-        title="Everything on Medium"
-        href="https://panuleppaniemi.medium.com"
-      />
-    ),
+    component: <Work title="The Shop" note="2026" />,
   },
 
   { column: 'work', component: <Label>Art</Label> },
@@ -175,7 +199,8 @@ const entries: Entry[] = [
     column: 'work',
     component: (
       <Work
-        title="Touchy Touchy ft. EZRA"
+        title="Touchy Touchy"
+        note="featuring EZRA"
         href="https://open.spotify.com/track/2s0Ea95qHSgtpPKw9pFBoD"
       />
     ),
@@ -185,6 +210,7 @@ const entries: Entry[] = [
     component: (
       <Work
         title="That's how you've been seen"
+        note="collab with EZRA the poetess"
         href="https://open.spotify.com/track/0PUsFYK8MeX6kKPVVwUvDS"
       />
     ),
@@ -197,18 +223,6 @@ const entries: Entry[] = [
         href="https://open.spotify.com/track/2GlUo4Q762EwClVraNmFzR"
       />
     ),
-  },
-
-  { column: 'work', component: <Label>Elsewhere</Label> },
-  {
-    column: 'work',
-    component: (
-      <Work title="LinkedIn" href="https://fi.linkedin.com/in/panuleppaniemi" />
-    ),
-  },
-  {
-    column: 'work',
-    component: <Work title="GitHub" href="https://github.com/panunu" />,
   },
 ]
 

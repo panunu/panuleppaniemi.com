@@ -4,7 +4,8 @@ import { PreviewContext } from './preview'
 
 type WorkProps = {
   title: string
-  href: string
+  // Optional: an entry with nowhere to go is just stated, not linked.
+  href?: string
   // Shown next to the cursor while hovering; clicking still opens the link.
   image?: string
   note?: string
@@ -24,6 +25,29 @@ const Work: FC<WorkProps> = ({ title, href, image, note }) => {
   // A link can unmount (or the pointer can leave via a scroll) while hovered.
   useEffect(() => hide, [hide])
 
+  const content = (
+    <>
+      <span className={styles.workTitle}>{title}</span>
+      {note && <span className={styles.workNote}>{note}</span>}
+    </>
+  )
+
+  // No href, no anchor: an entry that opens nothing should not read as a link
+  // to the pointer, the keyboard or a screen reader. Its picture still answers
+  // the cursor.
+  if (!href) {
+    return (
+      <span
+        className={styles.work}
+        title={title}
+        onMouseEnter={show}
+        onMouseLeave={hide}
+      >
+        {content}
+      </span>
+    )
+  }
+
   return (
     <a
       className={styles.work}
@@ -36,8 +60,7 @@ const Work: FC<WorkProps> = ({ title, href, image, note }) => {
       onFocus={show}
       onBlur={hide}
     >
-      <span className={styles.workTitle}>{title}</span>
-      {note && <span className={styles.workNote}>{note}</span>}
+      {content}
     </a>
   )
 }
