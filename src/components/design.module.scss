@@ -1,8 +1,6 @@
 $paper: #ffffff;
 $ink: #111111;
 $muted: #8c8c8c;
-// A note carries real information — dates, roles — so it sits darker than the
-// labels and the gray terms, which are only scaffolding.
 $noteInk: #4a4a4a;
 $hairline: #e6e6e6;
 
@@ -10,10 +8,6 @@ $thin: 100;
 $light: 300;
 $semibold: 600;
 
-// The only colour on the page besides the photographs. A term borrows one on
-// hover, then gives it back. Four of them: the count is the hover cycle's
-// length, and it has to stay co-prime with the 3/5/7 cycles below — at five,
-// every italic term would land on the same hue.
 $accents: #1f5fd0, #d4491f, #1f8a4c, #7a2ff2;
 
 $gutter: 3vw;
@@ -35,15 +29,12 @@ $mobile: 800px;
   flex-direction: row;
   width: 100vw;
   height: 100vh;
-  height: 100dvh;
   background: $paper;
   color: $ink;
 
   cursor: default;
 
   @media (max-width: $mobile) {
-    // The sections stack, one under the other, and the page is the only thing
-    // that scrolls — downwards, never sideways.
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
@@ -60,10 +51,6 @@ $mobile: 800px;
   overflow-x: hidden;
   overscroll-behavior: contain;
 
-  // The hairline is painted into the column rather than bordered onto it. A
-  // column clips its content at the padding edge and a border sits outside
-  // that, so a border is somewhere no picture could ever reach — this line sits
-  // inside, where a full-bleed picture runs straight over it.
   background-image: linear-gradient(to right, $hairline, $hairline);
   background-size: 1px 100%;
   background-position: 100% 0;
@@ -73,7 +60,6 @@ $mobile: 800px;
     background-image: none;
   }
 
-  // The columns are the whole page; no scrollbar furniture, please.
   scrollbar-width: none;
   -ms-overflow-style: none;
 
@@ -81,8 +67,6 @@ $mobile: 800px;
     display: none;
   }
 
-  // Mobile: a screen each at least, growing taller when the content asks for
-  // it. Nothing scrolls within a section — it is all one page going down.
   @media (max-width: $mobile) {
     flex: none;
     height: auto;
@@ -92,7 +76,6 @@ $mobile: 800px;
     overflow: visible;
     overscroll-behavior: auto;
 
-    // The sections divide horizontally here, and nothing needs to run over it.
     background-image: none;
     border-bottom: 1px solid $hairline;
 
@@ -103,8 +86,6 @@ $mobile: 800px;
 }
 
 .stack {
-  // Published as a variable so a picture can reach back over it without
-  // knowing which column it landed in.
   --gutter: #{$gutter};
 
   display: flex;
@@ -116,8 +97,6 @@ $mobile: 800px;
   @media (max-width: $mobile) {
     --gutter: #{$mobileGutter};
 
-    // A plain column the width of the screen. Nothing to wrap into: content
-    // that outgrows the section makes the section taller.
     padding: 6vh var(--gutter);
     gap: 4vh;
   }
@@ -175,9 +154,6 @@ $mobile: 800px;
 }
 
 .picture {
-  // Reaches back over the gutter and a pixel past the column on either side, so
-  // the clip decides the edge: the picture always lands exactly on the hairline
-  // and covers it, however the column's width rounds.
   width: calc(100% + var(--gutter) * 2 + 2px);
   margin-left: calc(var(--gutter) * -1 - 1px);
 
@@ -206,6 +182,7 @@ $mobile: 800px;
 .manifesto {
   width: 100%;
   max-width: 34em;
+  //text-align: justify;
 
   p {
     font-size: clamp(0.92rem, 1vw, 1.05rem);
@@ -222,24 +199,20 @@ $mobile: 800px;
 .term {
   width: 100%;
 
-  font-size: clamp(1.05rem, 1.45vw, 1.6rem);
-  font-weight: $thin;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
+  font-size: clamp(0.95rem, 1.15vw, 1.25rem);
+  font-weight: $light;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   overflow-wrap: anywhere;
   word-break: break-all;
   text-align: justify;
   color: $ink;
 
   span:nth-child(3n + 2) {
-    font-weight: $semibold;
+    color: $noteInk;
   }
 
   span:nth-child(5n + 3) {
-    font-style: italic;
-  }
-
-  span:nth-child(7n + 5) {
     color: $muted;
   }
 
@@ -254,7 +227,6 @@ $mobile: 800px;
   }
 }
 
-// Works.
 .columnWork {
   .stack {
     gap: 0;
@@ -306,16 +278,12 @@ $mobile: 800px;
   }
 
   @media (max-width: $mobile) {
-    // Take the screen's width, so a long note wraps under its title instead of
-    // running off the side of it.
     width: 100%;
     flex-wrap: wrap;
   }
 }
 
 .workTitle {
-  // Smaller than the name and the terms, and a step heavier to hold its weight
-  // at that size — hairline thin only reads at display sizes.
   font-size: clamp(0.95rem, 1.15vw, 1.25rem);
   font-weight: $light;
   letter-spacing: -0.01em;
@@ -330,12 +298,10 @@ $mobile: 800px;
   white-space: nowrap;
 
   @media (max-width: $mobile) {
-    // A phone is too narrow to promise a note a line of its own.
     white-space: normal;
   }
 }
 
-// Hover preview, pinned to the cursor.
 .preview {
   position: fixed;
   top: 0;
@@ -352,7 +318,6 @@ $mobile: 800px;
     width: 100%;
   }
 
-  // No cursor to follow.
   @media (hover: none) {
     display: none;
   }

@@ -17,7 +17,6 @@ import ixes from './assets/ixes.jpg'
 import paperBridge from './assets/the-paper-bridge.jpg'
 import dgSeppo from './assets/dg-seppo.png'
 
-// Three columns, in reading order. Order within a column is meaningful.
 export type Column = 'name' | 'manifesto' | 'work'
 
 export type Entry = {
@@ -26,7 +25,6 @@ export type Entry = {
 }
 
 const entries: Entry[] = [
-  // Name, picture.
   {
     column: 'name',
     component: <Name>{`Panu\nLeppäniemi`}</Name>,
@@ -40,7 +38,6 @@ const entries: Entry[] = [
       </figure>
     ),
   },
-  // Everything I have done, packed into a texture.
   {
     column: 'name',
     component: (
@@ -51,13 +48,11 @@ const entries: Entry[] = [
           generalist, strategy, photography, digital art, writing, code, systems thinking, services, design, prototypes,
           entrepreneurship, sustainability, ethics, community, advising,
           investing, board work, events, open source, experiments, hiring, scaling, operations,
-          storytelling, workshops, collaboration, music,
-          iteration, ownership, wonder`}
+          storytelling, workshops, collaboration, music, iteration`}
       </Term>
     ),
   },
 
-  // The manifesto.
   {
     column: 'manifesto',
     component: (
@@ -70,11 +65,12 @@ const entries: Entry[] = [
           dictated by someone else's story, and you will get stuck fulfilling
           their expectations. Of course, some people are better visionaries and
           storytellers, so you might end up just fine regardless. But perhaps by
-          writing one or even many, we would find greater ambitions than just
+          writing one or even many, we would find greater ambitions than only
           dreaming about buying a new, fancier car with this and this many
-          horsepower or this and that fidgety gadgety. As someone once said: it
-          is a true sign of wealth to be able to afford time with others. And
-          what are we here for if not to figure out this life, whatever this is,
+          horsepower or getting this and that fidgety gadgety. As someone once
+          said: it is a true sign of wealth to be able to afford time with
+          others. And what are we here for if not to figure out this life,
+          whatever this is,
           <i> with</i> others.
         </p>
 
@@ -90,8 +86,8 @@ const entries: Entry[] = [
         </p>
 
         <p>
-          Therefore. Let's build good, ambitious, low-hierarchy vessels so we
-          have better stories to tell.
+          Therefore. Let's build good, ambitious, low-hierarchy vessels with
+          better stories to tell.
         </p>
       </article>
     ),
@@ -145,6 +141,22 @@ const entries: Entry[] = [
     ),
   },
 
+  { column: 'work', component: <Label>Writing</Label> },
+  {
+    column: 'work',
+    component: (
+      <Work
+        title="Programming, Magic or Boredom?"
+        href="https://panuleppaniemi.medium.com/programming-magic-or-boredom-part-1-b341131b47c2"
+        note="Part 1"
+      />
+    ),
+  },
+  {
+    column: 'work',
+    component: <Work title="The Shop" note="2026" />,
+  },
+
   { column: 'work', component: <Label>Elsewhere</Label> },
   {
     column: 'work',
@@ -172,22 +184,6 @@ const entries: Entry[] = [
     component: (
       <Work title="Medium" href="https://panuleppaniemi.medium.com/" />
     ),
-  },
-
-  { column: 'work', component: <Label>Writing</Label> },
-  {
-    column: 'work',
-    component: (
-      <Work
-        title="Programming, Magic or Boredom?"
-        href="https://panuleppaniemi.medium.com/programming-magic-or-boredom-part-1-b341131b47c2"
-        note="Part 1"
-      />
-    ),
-  },
-  {
-    column: 'work',
-    component: <Work title="The Shop" note="2026" />,
   },
 
   { column: 'work', component: <Label>Art</Label> },

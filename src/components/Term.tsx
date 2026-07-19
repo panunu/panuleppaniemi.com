@@ -12,7 +12,7 @@ const Term: FC<{ children: string }> = ({ children }) => (
       .map((term) => term.trim().replace(/\s+/g, ' '))
       .filter(Boolean)
       .map((term, index) => (
-        <span key={index}>{term}</span>
+        <span key={index}>{term} / </span>
       ))}
   </p>
 )
