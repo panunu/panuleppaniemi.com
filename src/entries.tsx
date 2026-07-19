@@ -157,34 +157,6 @@ const entries: Entry[] = [
     component: <Work title="The Shop" note="2026" />,
   },
 
-  { column: 'work', component: <Label>Elsewhere</Label> },
-  {
-    column: 'work',
-    component: (
-      <Work title="LinkedIn" href="https://fi.linkedin.com/in/panuleppaniemi" />
-    ),
-  },
-  {
-    column: 'work',
-    component: <Work title="GitHub" href="https://github.com/panunu" />,
-  },
-  {
-    column: 'work',
-    component: (
-      <Work title="Medium" href="https://panuleppaniemi.medium.com/" />
-    ),
-  },
-  {
-    column: 'work',
-    component: (
-      <Work
-        title="Software production course"
-        href="https://ohjelmistotuotanto.panuleppaniemi.com/"
-        note="2012 (Teacher, Metropolia UAS)"
-      />
-    ),
-  },
-
   { column: 'work', component: <Label>Art</Label> },
 
   {
@@ -255,6 +227,36 @@ const entries: Entry[] = [
         title="Zero reasons why you're not mine"
         href="https://open.spotify.com/track/2GlUo4Q762EwClVraNmFzR"
       />
+    ),
+  },
+
+  { column: 'work', component: <Label>Other work</Label> },
+  {
+    column: 'work',
+    component: (
+      <Work
+        title="Practical software production"
+        href="https://ohjelmistotuotanto.panuleppaniemi.com/"
+        note="2012 (Teacher, Metropolia UAS)"
+      />
+    ),
+  },
+
+  { column: 'work', component: <Label>Elsewhere</Label> },
+  {
+    column: 'work',
+    component: (
+      <Work title="LinkedIn" href="https://fi.linkedin.com/in/panuleppaniemi" />
+    ),
+  },
+  {
+    column: 'work',
+    component: <Work title="GitHub" href="https://github.com/panunu" />,
+  },
+  {
+    column: 'work',
+    component: (
+      <Work title="Medium" href="https://panuleppaniemi.medium.com/" />
     ),
   },
 ]
