@@ -161,16 +161,6 @@ const entries: Entry[] = [
   {
     column: 'work',
     component: (
-      <Work
-        title="Teaching"
-        href="https://ohjelmistotuotanto.panuleppaniemi.com/"
-        note="2012 (Software production, Metropolia UAS)"
-      />
-    ),
-  },
-  {
-    column: 'work',
-    component: (
       <Work title="LinkedIn" href="https://fi.linkedin.com/in/panuleppaniemi" />
     ),
   },
@@ -178,11 +168,20 @@ const entries: Entry[] = [
     column: 'work',
     component: <Work title="GitHub" href="https://github.com/panunu" />,
   },
-
   {
     column: 'work',
     component: (
       <Work title="Medium" href="https://panuleppaniemi.medium.com/" />
+    ),
+  },
+  {
+    column: 'work',
+    component: (
+      <Work
+        title="Software production course"
+        href="https://ohjelmistotuotanto.panuleppaniemi.com/"
+        note="2012 (Teacher, Metropolia UAS)"
+      />
     ),
   },
 
